@@ -34,4 +34,17 @@ def save_doctor_schedule():
     pass
 
 
+def doctor_appointement():
+    pass
 
+
+def show_patient_complaints(numero_dossier):
+    pass
+
+
+def show_patient_imc(patient):
+    pass
+
+
+def main():
+    pass
