@@ -7,6 +7,7 @@ def add_new_doctor(nom, prenom, postnom,
 def add_new_patient(nom, prenom, postnom,
                     tel, poids, taille, genre,
                     age, numero_dossier):
+    imc = poids/(taille**2)
     pass
 
 
