@@ -1,6 +1,27 @@
+import datetime
 
-def add_new_doctor(nom, prenom, postnom,
-                   tel, matricule, specialisation):
+li_doctor = [["Mathieu", "Dan", "Du bois", "0906340486", "G1752/-", "pediatre"]]
+li_patient = []
+
+
+def add_new_doctor(nom, postnom, prenom,
+                   tel, specialisation):
+    """
+
+    :param nom: ex(KAFANDA)
+    :param postnom: ex(NDALA)
+    :param prenom: ex(Paul)
+    :param tel: num de tel
+    :param specialisation: ex(Pediatre)
+    :return: void
+    """
+    dateact = datetime.datetime.now()
+    annee = str(dateact.year)
+    place = str(len(li_doctor)+1)
+    matricule = annee[-2:] + (nom[1]).upper() + (postnom[1]).upper() + place.zfill(3)
+
+    li_doctor.append([nom, prenom, postnom,
+                      tel, matricule, specialisation])
     pass
 
 
@@ -8,10 +29,13 @@ def add_new_patient(nom, prenom, postnom,
                     tel, poids, taille, genre,
                     age, numero_dossier):
     imc = poids/(taille**2)
+    li_patient.append([nom, prenom, postnom,
+                       tel, poids, taille, genre, age, numero_dossier, imc])
     pass
 
 
 def find_patients(nom):
+
     pass
 
 
