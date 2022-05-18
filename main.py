@@ -25,11 +25,28 @@ def add_new_doctor(nom, postnom, prenom,
     pass
 
 
-def add_new_patient(nom, prenom, postnom,
+def add_new_patient(nom, postnom, prenom,
                     tel, poids, taille, genre,
-                    age, numero_dossier):
+                    age):
+    """
+
+    :param nom:
+    :param postnom:
+    :param prenom:
+    :param tel:
+    :param poids:
+    :param taille:
+    :param genre:
+    :param age:
+    :return:
+    """
+    dateact = datetime.datetime.now()
+    annee = str(dateact.year)
+    place = str(len(li_patient) + 1)
+    numero_dossier = genre.upper() + nom[0] + postnom[0] + prenom[0] + annee[-2:] + place.zfill(4)
     imc = poids/(taille**2)
-    li_patient.append([nom, prenom, postnom,
+
+    li_patient.append([nom, postnom, prenom,
                        tel, poids, taille, genre, age, numero_dossier, imc])
     pass
 
