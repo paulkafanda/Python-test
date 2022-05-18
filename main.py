@@ -1,7 +1,13 @@
-import datetime
+import datetime, os
 
 li_doctor = [["Mathieu", "Dan", "Du bois", "0906340486", "G1752/-", "pediatre"]]
 li_patient = []
+len_doc, len_pat = len(li_doctor), len(li_patient)
+
+
+# fonction anonyme qui nettoye le terminal
+clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
+# clear()
 
 
 def add_new_doctor(nom, postnom, prenom,
@@ -48,27 +54,49 @@ def add_new_patient(nom, postnom, prenom,
 
     li_patient.append([nom, postnom, prenom,
                        tel, poids, taille, genre, age, numero_dossier, imc])
+    save_complaints(numero_dossier)
     pass
 
 
 def find_patients(nom):
-
+    nom = nom.upper()
+    for i in range(len_pat):
+        if nom == li_patient[i][0] or nom == li_patient[i][1] or\
+                nom == li_patient[i][2] or nom == " ".join(li_patient[i][:3]):
+            print(" ".join(li_patient[i]))
+            pass
     pass
 
 
 def find_patient(numero_dossier):
+    mattt = numero_dossier
+    mat_p = 0
+    for i in range(len(li_patient)):
+        if mattt == li_patient[i][8]:
+            print(" ".join(li_patient[i]))
+            mat_p = 1
+            break
+        if mat_p == 0 and i == len(li_patient) - 1:
+            print("Inconnu!")
     pass
 
 
 def show_patients():
+    for i in range(len(li_patient)):
+        print(i+1, " ".join(li_patient[i]))
     pass
 
 
 def show_doctor():
+    for i in range(len(li_doctor)):
+        print(i+1, " ".join(li_doctor[i]))
     pass
 
 
-def save_complaints(complaints):
+def save_complaints(num_dossier):
+    di_patient = {}
+    plainte = input("la Plainte: ")
+    di_patient[num_dossier] = plainte
     pass
 
 
@@ -81,10 +109,28 @@ def doctor_appointement():
 
 
 def show_patient_complaints(numero_dossier):
+    mattt = numero_dossier
+    mat_p = 0
+    for i in range(len(li_patient)):
+        if mattt == li_patient[i][8]:
+            print(li_patient[i][9])
+            mat_p = 1
+            break
+        if mat_p == 0 and i == len(li_patient) - 1:
+            print("Inconnu!")
     pass
 
 
-def show_patient_imc(patient):
+def show_patient_imc(numero_dossier):
+    mattt = numero_dossier
+    mat_p = 0
+    for i in range(len(li_patient)):
+        if mattt == li_patient[i][8]:
+            print(li_patient[i][9])
+            mat_p = 1
+            break
+        if mat_p == 0 and i == len(li_patient) - 1:
+            print("Inconnu!")
     pass
 
 
