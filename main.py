@@ -1,7 +1,8 @@
 import datetime, os
-
+# from rich.console import Console
 li_doctor = [["Mathieu", "Dan", "Du bois", "0906340486", "G1752/-", "pediatre"]]
 li_patient = []
+di_patient = {}
 len_doc, len_pat = len(li_doctor), len(li_patient)
 
 
@@ -54,7 +55,7 @@ def add_new_patient(nom, postnom, prenom,
 
     li_patient.append([nom, postnom, prenom,
                        tel, poids, taille, genre, age, numero_dossier, imc])
-    save_complaints(numero_dossier)
+    # save_complaints(num_dossier, plainte)
     pass
 
 
@@ -93,9 +94,9 @@ def show_doctor():
     pass
 
 
-def save_complaints(num_dossier):
-    di_patient = {}
-    plainte = input("la Plainte: ")
+def save_complaints(num_dossier, plainte):
+
+    # plainte = input("la Plainte: ")
     di_patient[num_dossier] = plainte
     pass
 
@@ -134,5 +135,88 @@ def show_patient_imc(numero_dossier):
     pass
 
 
+def menu():
+    print("1 add_new_doctor",
+          "2 add_new_patient",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "un autre our quitter",
+          sep="\n")
+
+
+def nppt():
+    nom = input("le nom: ")
+    while 1:
+        if type(nom) == str:
+            break
+        else:
+            nom = input("entrez un nom valide le nom: ")
+
+    postnom = input("le Post-nom: ")
+    while 1:
+        if type(postnom) == str:
+            break
+        else:
+            postnom = input("Entrez chaine de car pour le postnom: ")
+
+    prenom = input("le Prenom: ")
+    while 1:
+        if type(prenom) == str:
+            break
+        else:
+            prenom = input("entrer un chaine de car pour le prenom: ")
+
+    tel = input("le Tel: ")
+    while 1:
+        if type(tel) == 'str':
+            break
+        else:
+            prenom = input("le num de tel: ")
+
+    return nom, postnom, prenom, tel
+
+
 def main():
+    while 1:
+        menu()
+        while 1:
+            try:
+                choice = int(input("\nVotre choix: "))
+                break
+            except ValueError:
+                print("^Valeur invalide, entrez un nombre")
+
+        match choice:
+            case 1:
+                nom, postnom, prenom, tel = nppt()
+                specialisation = input("la Specialisation: ")
+                add_new_doctor(nom, postnom, prenom, tel, specialisation)
+                pass
+            case 2:
+                nom, postnom, prenom, tel = nppt()
+                poids, taille, genre, age = input("Le poids: "), input("La taille: "),\
+                                            input("Le genre: "), input("L'age: ")
+                add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age)
+
+                pass
+            case 3:
+                show_doctor()
+                pass
+            case 4:
+                pass
+            case 5:
+                pass
+            case 6:
+                pass
+            case _:
+                clear()
+                print("\n### FIN ###")
+                break
     pass
+
+
+if __name__ == '__main__':
+    main()
