@@ -4,7 +4,7 @@ li_doctor = [["Mathieu", "Dan", "Du bois", "0906340486", "G1752/-", "pediatre"]]
 li_patient = []
 di_patient = {}
 len_doc, len_pat = len(li_doctor), len(li_patient)
-
+debut = 0
 
 # fonction anonyme qui nettoye le terminal
 clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
@@ -84,13 +84,13 @@ def find_patient(numero_dossier):
 
 def show_patients():
     for i in range(len(li_patient)):
-        print(i+1, " ".join(li_patient[i]))
+        print('\n', i+1, " ".join(li_patient[i]))
     pass
 
 
 def show_doctor():
     for i in range(len(li_doctor)):
-        print(i+1, " ".join(li_doctor[i]))
+        print('\n', i+1, " ".join(li_doctor[i]))
     pass
 
 
@@ -136,50 +136,29 @@ def show_patient_imc(numero_dossier):
 
 
 def menu():
-    print("1 add_new_doctor",
-          "2 add_new_patient",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "un autre our quitter",
+    print(f"{' ':>30}{'1:':3} {'add_new_doctor':30}".upper(),
+          f"{' ':>30}{'2:':3} {'add_new_patient':30}".upper(),
+          f"{' ':>30}{'3:':3} {'show_doctor':30}".upper(),
+          f"{' ':>30}{'4:':3} {'show_patients':30}".upper(),
+          f"{' ':>30}{'5:':3} {'5':30}".upper(),
+          f"{' ':>30}{'6:':3} 6".upper(),
+          f"{' ':>30}{'7:':3} 7".upper(),
+          f"{' ':>30}{'un autre nombre pour quitter':30}".upper(),
           sep="\n")
 
 
 def nppt():
     nom = input("le nom: ")
-    while 1:
-        if type(nom) == str:
-            break
-        else:
-            nom = input("entrez un nom valide le nom: ")
-
     postnom = input("le Post-nom: ")
-    while 1:
-        if type(postnom) == str:
-            break
-        else:
-            postnom = input("Entrez chaine de car pour le postnom: ")
-
     prenom = input("le Prenom: ")
-    while 1:
-        if type(prenom) == str:
-            break
-        else:
-            prenom = input("entrer un chaine de car pour le prenom: ")
-
     tel = input("le Tel: ")
-    while 1:
-        if type(tel) == 'str':
-            break
-        else:
-            prenom = input("le num de tel: ")
 
     return nom, postnom, prenom, tel
 
 
 def main():
+    "{'FIN':#^63}"
+    print(f"{' ':>30}{'PROGRAMME DE GESTION D`UN HOPITAL':#^33}")
     while 1:
         menu()
         while 1:
@@ -197,8 +176,29 @@ def main():
                 pass
             case 2:
                 nom, postnom, prenom, tel = nppt()
-                poids, taille, genre, age = input("Le poids: "), input("La taille: "),\
-                                            input("Le genre: "), input("L'age: ")
+                while 1:
+                    try:
+                        poids = float(input("Le poids: "))
+                        break
+                    except ValueError:
+                        print("Entrez un nombre!: ")
+
+                while 1:
+                    try:
+                        taille = float(input("La taille: "))
+                        break
+                    except ValueError:
+                        print("Entrer un nombre!: ")
+
+                genre = input("Le genre: ")
+
+                while 1:
+                    try:
+                        age = float(input("L'age: "))
+                        break
+                    except ValueError:
+                        print("Entrez un nombre!: ")
+
                 add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age)
 
                 pass
@@ -206,6 +206,7 @@ def main():
                 show_doctor()
                 pass
             case 4:
+                show_patients()
                 pass
             case 5:
                 pass
@@ -213,7 +214,7 @@ def main():
                 pass
             case _:
                 clear()
-                print("\n### FIN ###")
+                print(f"\n{'FIN':#^63}")
                 break
     pass
 
