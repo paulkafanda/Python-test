@@ -5,6 +5,7 @@ import os
 li_doctor = [["Mathieu", "Dan", "Du bois", "0906340486", "G1752/-", "pediatre"]]
 li_patient = []
 di_patient = {}
+li_doctor_shedule = []
 len_doc, len_pat = len(li_doctor), len(li_patient)
 debut = 0
 
@@ -157,6 +158,70 @@ def save_complaints(num_dossier, plainte):
 
 
 def save_doctor_schedule():
+    li_jour = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI", "DIMANCHE"]
+    print(
+        f"\n{'':>30} {'0: LUNDI'}"
+        f"{'':>30} {'1: MARDI'}"
+        f"{'':>30} {'2: MERCREDI'}"
+        f"{'':>30} {'3: JEUDI'}"
+        f"{'':>30} {'4: VENDREDI'}"
+        f"{'':>30} {'5: SAMEDI'}"
+        f"{'':>30} {'6: DIMANCHE'}\n"
+    )
+
+    # Si la choix est vide l'on doit reentrer une valeur
+    # si choix contient 1 car on essaie de le convertir en entier
+    # puis on ajoute dans li_doctor_shedule, le jour qui porte cet indice dans li_jour
+    # if len(choix) == 1:
+    while 1:
+        choix = input(
+            "Choisissez un jour ex:1 pour Mardi\n"
+            "Ou des jours ex: 2;3 pour Mecredi et Jeudi\n"
+            "Ou encore une plage de jours ex: 0:6 pour les jours compris entre Lundi & Dimanche"
+        )
+
+        while len(choix) == 0:
+            choix = input("Saisie invalid!\nVotre choix: ")
+
+        if len(choix) == 1:
+            try:
+                jour_p = int(choix)
+            except ValueError:
+                print("Valeur invalide!")
+                # choix = input()
+            else:
+                li_doctor_shedule.append([li_jour[jour_p]])
+                break
+
+        # On ajoute ce jour
+        # li_doctor_shedule.append([li_jour[jour_p]])
+        elif len(choix) == 3:
+            if choix[1] == ';':
+                try:
+                    jour_p_1 = int(choix[0])
+                    jour_p_2 = int(choix[-1])
+                    # break
+                except ValueError:
+                    print("Valeur invalid!")
+                else:
+                    li_doctor_shedule.append([li_jour[jour_p_1], li_jour[jour_p_2]])
+                    break
+
+            elif choix[1] == '-':
+                try:
+                    jour_p_1 = int(choix[0])
+                    jour_p_2 = int(choix[-1])
+                except ValueError:
+                    print("Valeur invalid!")
+                else:
+                    if jour_p_1 < jour_p_2:
+                        for i in range(jour_p_1, jour_p_2+1):
+                            li_doctor_shedule.append([li_jour[i]])
+                    break
+                    pass
+            else:
+                print("Mauvais separateur")
+
     pass
 
 
@@ -291,14 +356,14 @@ def main():
                 find_patient(numero_dossier)
                 pass
 
-            case 8:
-                numero_dossier = (input("Le numero du dossier: ")).upper()
-                show_patient_imc(numero_dossier)
-                pass
-
             case 7:
                 clear()
                 titre()
+                pass
+
+            case 8:
+                numero_dossier = (input("Le numero du dossier: ")).upper()
+                show_patient_imc(numero_dossier)
                 pass
 
             case _:
