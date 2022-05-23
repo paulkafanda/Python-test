@@ -38,7 +38,16 @@ def add_new_doctor(nom, postnom, prenom,
     place = str(len(li_doctor) + 1)
     matricule = annee[-2:] + (nom[1]).upper() + (postnom[1]).upper() + place.zfill(3)
 
-    li_doctor.append([nom, prenom, postnom, tel, matricule, specialisation])
+    li_doctor.append(
+        [
+            nom.upper(),
+            prenom.capitalize(),
+            postnom.upper(),
+            tel,
+            matricule.upper(),
+            specialisation.upper()
+        ]
+    )
     pass
 
 
@@ -62,7 +71,18 @@ def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
     imc = poids / (taille ** 2)
 
     li_patient.append(
-        [nom, postnom, prenom, tel, str(poids), str(taille), str(genre), str(age), numero_dossier, str(imc)]
+        [
+            nom.upper(),
+            postnom.upper(),
+            prenom.capitalize(),
+            tel,
+            str(poids),
+            str(taille),
+            genre.upper(),
+            str(age),
+            numero_dossier.upper(),
+            str(imc)
+        ]
     )
     # save_complaints(num_dossier, plainte)
     pass
@@ -72,7 +92,7 @@ def find_patients(nom):
     nom = nom.upper()
     for i in range(len_pat):
         if nom == li_patient[i][0] or nom == li_patient[i][1] \
-                or nom == li_patient[i][2] or nom == " ".join(li_patient[i][:3]):
+                or nom.capitalize() == li_patient[i][2] or nom == " ".join(li_patient[i][:3]):
             print(f"{' ':>30}", " ".join(li_patient[i]))
             pass
     pass
@@ -237,14 +257,17 @@ def main():
                 pass
 
             case 5:
+                nom = (input("Le nom du Patient: ")).upper()
                 find_patients(nom)
                 pass
 
             case 6:
+                numero_dossier = (input("Le numero du dossier: ")).upper()
                 find_patient(numero_dossier)
                 pass
 
             case 8:
+                numero_dossier = (input("Le numero du dossier: ")).upper()
                 show_patient_imc(numero_dossier)
                 pass
 
