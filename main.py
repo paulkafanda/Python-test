@@ -90,12 +90,24 @@ def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
 
 def find_patients(nom):
     nom = nom.upper()
-    for i in range(len_pat):
+    for i in range(len(li_patient)):
         if nom == li_patient[i][0] or nom == li_patient[i][1] \
                 or nom.capitalize() == li_patient[i][2] or nom == " ".join(li_patient[i][:3]):
-            print(f"{' ':>30}", " ".join(li_patient[i]))
-            pass
-    pass
+            print(
+                  f"{li_patient[i][0]:10} "
+                  f"{li_patient[i][1]:10} "
+                  f"{li_patient[i][2]:10} "
+                  f"{li_patient[i][3]:10} "
+                  f"{li_patient[i][4]:5} "
+                  f"{li_patient[i][5]:4} "
+                  f"{li_patient[i][6]:1} "
+                  f"{li_patient[i][7]:3} "
+                  f"{li_patient[i][8]:10} "
+                  f"{li_patient[i][9]:5}"
+            )
+            # print(f"{' ':>30}", " ".join(li_patient[i]))
+            # pass
+    # pass
 
 
 def find_patient(numero_dossier):
@@ -113,7 +125,20 @@ def find_patient(numero_dossier):
 
 def show_patients():
     for i in range(len(li_patient)):
-        print(f"{' ':>30}", i + 1, " ".join(li_patient[i]))
+        # 2
+        # print(f"{' ':>30}", i + 1, " ".join(li_patient[i]))
+        print(
+            f"{li_patient[i][0]:10} "
+            f"{li_patient[i][1]:10} "
+            f"{li_patient[i][2]:10} "
+            f"{li_patient[i][3]:10} "
+            f"{li_patient[i][4]:5} "
+            f"{li_patient[i][5]:4} "
+            f"{li_patient[i][6]:1} "
+            f"{li_patient[i][7]:3} "
+            f"{li_patient[i][8]:10} "
+            f"{li_patient[i][9]:5}"
+        )
     seppep()
     pass
 
@@ -257,9 +282,9 @@ def main():
                 pass
 
             case 5:
-                nom = (input("Le nom du Patient: ")).upper()
+                nom = input("Le nom du Patient: ")
                 find_patients(nom)
-                pass
+                # pass
 
             case 6:
                 numero_dossier = (input("Le numero du dossier: ")).upper()
