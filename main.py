@@ -1,4 +1,6 @@
-import datetime, os
+import datetime
+import os
+
 # from rich.console import Console
 li_doctor = [["Mathieu", "Dan", "Du bois", "0906340486", "G1752/-", "pediatre"]]
 li_patient = []
@@ -7,7 +9,16 @@ len_doc, len_pat = len(li_doctor), len(li_patient)
 debut = 0
 
 # fonction anonyme qui nettoye le terminal
-clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
+# clear = lambda: os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def clear():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+
 # clear()
 
 
@@ -24,17 +35,14 @@ def add_new_doctor(nom, postnom, prenom,
     """
     dateact = datetime.datetime.now()
     annee = str(dateact.year)
-    place = str(len(li_doctor)+1)
+    place = str(len(li_doctor) + 1)
     matricule = annee[-2:] + (nom[1]).upper() + (postnom[1]).upper() + place.zfill(3)
 
-    li_doctor.append([nom, prenom, postnom,
-                      tel, matricule, specialisation])
+    li_doctor.append([nom, prenom, postnom, tel, matricule, specialisation])
     pass
 
 
-def add_new_patient(nom, postnom, prenom,
-                    tel, poids, taille, genre,
-                    age):
+def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
     """
 
     :param nom:
@@ -51,10 +59,11 @@ def add_new_patient(nom, postnom, prenom,
     annee = str(dateact.year)
     place = str(len(li_patient) + 1)
     numero_dossier = genre.upper() + nom[0] + postnom[0] + prenom[0] + annee[-2:] + place.zfill(4)
-    imc = poids/(taille**2)
+    imc = poids / (taille ** 2)
 
-    li_patient.append([nom, postnom, prenom,
-                       tel, poids, taille, genre, age, numero_dossier, imc])
+    li_patient.append(
+        [nom, postnom, prenom, tel, str(poids), str(taille), str(genre), str(age), numero_dossier, str(imc)]
+    )
     # save_complaints(num_dossier, plainte)
     pass
 
@@ -62,9 +71,9 @@ def add_new_patient(nom, postnom, prenom,
 def find_patients(nom):
     nom = nom.upper()
     for i in range(len_pat):
-        if nom == li_patient[i][0] or nom == li_patient[i][1] or\
-                nom == li_patient[i][2] or nom == " ".join(li_patient[i][:3]):
-            print(" ".join(li_patient[i]))
+        if nom == li_patient[i][0] or nom == li_patient[i][1] \
+                or nom == li_patient[i][2] or nom == " ".join(li_patient[i][:3]):
+            print(f"{' ':>30}", " ".join(li_patient[i]))
             pass
     pass
 
@@ -74,28 +83,29 @@ def find_patient(numero_dossier):
     mat_p = 0
     for i in range(len(li_patient)):
         if mattt == li_patient[i][8]:
-            print(" ".join(li_patient[i]))
+            print(f"{' ':>30}", " ".join(li_patient[i]))
             mat_p = 1
             break
         if mat_p == 0 and i == len(li_patient) - 1:
-            print("Inconnu!")
+            print(f"{' ':>30}Inconnu!")
     pass
 
 
 def show_patients():
     for i in range(len(li_patient)):
-        print('\n', i+1, " ".join(li_patient[i]))
+        print(f"{' ':>30}", i + 1, " ".join(li_patient[i]))
+    seppep()
     pass
 
 
 def show_doctor():
     for i in range(len(li_doctor)):
-        print('\n', i+1, " ".join(li_doctor[i]))
+        print(f"{' ':>27}", i + 1, " ".join(li_doctor[i]))
+    seppep()
     pass
 
 
 def save_complaints(num_dossier, plainte):
-
     # plainte = input("la Plainte: ")
     di_patient[num_dossier] = plainte
     pass
@@ -114,11 +124,11 @@ def show_patient_complaints(numero_dossier):
     mat_p = 0
     for i in range(len(li_patient)):
         if mattt == li_patient[i][8]:
-            print(li_patient[i][9])
+            print(f"{' ':>30}", li_patient[i][9])
             mat_p = 1
             break
         if mat_p == 0 and i == len(li_patient) - 1:
-            print("Inconnu!")
+            print(f"{' ':>30}Inconnu!")
     pass
 
 
@@ -127,11 +137,11 @@ def show_patient_imc(numero_dossier):
     mat_p = 0
     for i in range(len(li_patient)):
         if mattt == li_patient[i][8]:
-            print(li_patient[i][9])
+            print(f"{' ':>30}", li_patient[i][9])
             mat_p = 1
             break
         if mat_p == 0 and i == len(li_patient) - 1:
-            print("Inconnu!")
+            print(f"{' ':>30}Inconnu!")
     pass
 
 
@@ -142,62 +152,78 @@ def menu():
           f"{' ':>30}{'4:':3} {'show_patients':30}".upper(),
           f"{' ':>30}{'5:':3} {'5':30}".upper(),
           f"{' ':>30}{'6:':3} 6".upper(),
-          f"{' ':>30}{'7:':3} 7".upper(),
+          f"{' ':>30}{'7:':3} nettoyer le terminal".upper(),
           f"{' ':>30}{'un autre nombre pour quitter':30}".upper(),
           sep="\n")
 
 
 def nppt():
-    nom = input("le nom: ")
-    postnom = input("le Post-nom: ")
-    prenom = input("le Prenom: ")
-    tel = input("le Tel: ")
+    nom = input(f"{' ':>30}le nom: ")
+    postnom = input(f"{' ':>30}le Post-nom: ")
+    prenom = input(f"{' ':>30}le Prenom: ")
+    tel = input(f"{' ':>30}le Tel: ")
 
     return nom, postnom, prenom, tel
 
 
+def titre():
+    print(
+        f"\n{' ':>20} {' DEBUT ':#^50}",
+        f"{' ':>29} {'PROGRAMME-DE-GESTION-D-UN-HOPITAL':#^33}",
+        f"{' ':>20} {' DEBUT ':#^50}",
+        sep='\n', end='\n' * 2
+    )
+
+
+def seppep():
+    print('\n' * 2)
+
+
 def main():
-    "{'FIN':#^63}"
-    print(f"{' ':>30}{'PROGRAMME DE GESTION D`UN HOPITAL':#^33}")
+    """
+
+    """
+    titre()
     while 1:
         menu()
         while 1:
             try:
-                choice = int(input("\nVotre choix: "))
+                choice = int(input(f"\n{' ':>30}Votre choix: "))
                 break
             except ValueError:
-                print("^Valeur invalide, entrez un nombre")
+                print(f"{' ':>30}^Valeur invalide, entrez un nombre")
 
         match choice:
             case 1:
                 nom, postnom, prenom, tel = nppt()
-                specialisation = input("la Specialisation: ")
+                specialisation = input(f"{' ':>30}la Specialisation: ")
                 add_new_doctor(nom, postnom, prenom, tel, specialisation)
                 pass
+
             case 2:
                 nom, postnom, prenom, tel = nppt()
                 while 1:
                     try:
-                        poids = float(input("Le poids: "))
+                        poids = float(input(f"{' ':>30}Le poids: "))
                         break
                     except ValueError:
-                        print("Entrez un nombre!: ")
+                        print(f"{' ':>30}Entrez un nombre!")
 
                 while 1:
                     try:
-                        taille = float(input("La taille: "))
+                        taille = float(input(f"{' ':>30}La taille: "))
                         break
                     except ValueError:
-                        print("Entrer un nombre!: ")
+                        print(f"{' ':>30}Entrer un nombre!")
 
-                genre = input("Le genre: ")
+                genre = input(f"{' ':>30}Le genre: ")
 
                 while 1:
                     try:
-                        age = float(input("L'age: "))
+                        age = int(input(f"{' ':>30}L'age: "))
                         break
                     except ValueError:
-                        print("Entrez un nombre!: ")
+                        print(f"{' ':>30}Entrez un nombre!: ")
 
                 add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age)
 
@@ -205,16 +231,31 @@ def main():
             case 3:
                 show_doctor()
                 pass
+
             case 4:
                 show_patients()
                 pass
+
             case 5:
+                find_patients(nom)
                 pass
+
             case 6:
+                find_patient(numero_dossier)
                 pass
+
+            case 8:
+                show_patient_imc(numero_dossier)
+                pass
+
+            case 7:
+                clear()
+                titre()
+                pass
+
             case _:
                 clear()
-                print(f"\n{'FIN':#^63}")
+                print(f"\n{' ':>20} {' FIN ':#^50}")
                 break
     pass
 
