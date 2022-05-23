@@ -161,12 +161,12 @@ def save_doctor_schedule():
     li_jour = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI", "DIMANCHE"]
     print(
         f"\n{'':>30} {'0: LUNDI'}"
-        f"{'':>30} {'1: MARDI'}"
-        f"{'':>30} {'2: MERCREDI'}"
-        f"{'':>30} {'3: JEUDI'}"
-        f"{'':>30} {'4: VENDREDI'}"
-        f"{'':>30} {'5: SAMEDI'}"
-        f"{'':>30} {'6: DIMANCHE'}\n"
+        f"\n{'':>30} {'1: MARDI'}"
+        f"\n{'':>30} {'2: MERCREDI'}"
+        f"\n{'':>30} {'3: JEUDI'}"
+        f"\n{'':>30} {'4: VENDREDI'}"
+        f"\n{'':>30} {'5: SAMEDI'}"
+        f"\n{'':>30} {'6: DIMANCHE'}\n"
     )
 
     # Si la choix est vide l'on doit reentrer une valeur
@@ -214,9 +214,16 @@ def save_doctor_schedule():
                 except ValueError:
                     print("Valeur invalid!")
                 else:
+                    li_doctor_shedule_temp = []
                     if jour_p_1 < jour_p_2:
                         for i in range(jour_p_1, jour_p_2+1):
-                            li_doctor_shedule.append([li_jour[i]])
+                            li_doctor_shedule_temp.append([li_jour[i]])
+                        li_doctor_shedule.append(li_doctor_shedule_temp)
+
+                    else:
+                        for i in range(jour_p_2, jour_p_1 + 1):
+                            li_doctor_shedule_temp.append([li_jour[i]])
+                        li_doctor_shedule.append(li_doctor_shedule_temp)
                     break
                     pass
             else:
@@ -366,8 +373,12 @@ def main():
                 show_patient_imc(numero_dossier)
                 pass
 
+            case 9:
+                save_doctor_schedule()
+
             case _:
                 clear()
+                print(li_doctor_shedule)
                 print(f"\n{' ':>20} {' FIN ':#^50}")
                 break
     pass
