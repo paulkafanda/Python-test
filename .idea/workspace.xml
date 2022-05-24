@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5373705d-b6f7-47fa-85a3-9d13c3d3b2e4" name="Changes" comment="correction du bug(horraire medecin) sur les chaines contenant x car: 3 &lt; x &lt; 13">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/main_db.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29AWl9NJHtfdNCCf4TdWuXXqFJr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Users/paul/PycharmProjects/PyCharmLearningProject/venv/Scripts/pip3.10.exe",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\paul\PycharmProjects\INTERROGATION_PRATIQUE_ALGO2\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5373705d-b6f7-47fa-85a3-9d13c3d3b2e4" name="Changes" comment="" />
+      <created>1652556522372</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652556522372</updated>
+    </task>
+    <task id="LOCAL-00001" summary="ajout du fichier principal">
+      <created>1652607794502</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652607794502</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add_new_doctor">
+      <created>1652867197031</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652867197032</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add_new_patient">
+      <created>1652872548205</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652872548205</updated>
+    </task>
+    <task id="LOCAL-00004" summary="iaaffss depart de ces fonctions">
+      <created>1652909556855</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1652909556855</updated>
+    </task>
+    <task id="LOCAL-00005" summary="nppt avec controle de saisi">
+      <created>1653136557465</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653136557465</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ajout de quelques fonctionnalites">
+      <created>1653145818061</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653145818061</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ajout de quelques fonctionnalites">
+      <created>1653300119205</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1653300119205</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ajout de quelques fonctionnalites">
+      <created>1653302685474</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653302685474</updated>
+    </task>
+    <task id="LOCAL-00009" summary="correction d'un bug(recherche d'un patient a partir de son nom)">
+      <created>1653310882564</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1653310882564</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ajout d'une fonctionnalites(horraire medecin)">
+      <created>1653327198085</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1653327198085</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ajout d'une fonctionnalites(horraire medecin)">
+      <created>1653332656428</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1653332656428</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ajout d'une fonctionnalites(horraire medecin)">
+      <created>1653332687307</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1653332687307</updated>
+    </task>
+    <task id="LOCAL-00013" summary="correction du bug(horraire medecin) sur les chaines contenant x car: 3 &lt; x &lt; 13">
+      <created>1653393871151</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1653393871151</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ajout du fichier principal" />
+    <MESSAGE value="add_new_doctor" />
+    <MESSAGE value="add_new_patient" />
+    <MESSAGE value="iaaffss depart de ces fonctions" />
+    <MESSAGE value="nppt avec controle de saisi" />
+    <MESSAGE value="ajout de quelques fonctionnalites" />
+    <MESSAGE value="correction d'un bug(recherche d'un patient a partir de son nom)" />
+    <MESSAGE value="ajout d'une fonctionnalites(horraire medecin)" />
+    <MESSAGE value="correction du bug(horraire medecin) sur les chaines contenant x car: 3 &lt; x &lt; 13" />
+    <option name="LAST_COMMIT_MESSAGE" value="correction du bug(horraire medecin) sur les chaines contenant x car: 3 &lt; x &lt; 13" />
+  </component>
+</project>
