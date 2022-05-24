@@ -217,18 +217,40 @@ def save_doctor_schedule():
                     li_doctor_shedule_temp = []
                     if jour_p_1 < jour_p_2:
                         for i in range(jour_p_1, jour_p_2+1):
-                            li_doctor_shedule_temp.append([li_jour[i]])
+                            li_doctor_shedule_temp.append(li_jour[i])
                         li_doctor_shedule.append(li_doctor_shedule_temp)
 
                     else:
                         for i in range(jour_p_2, jour_p_1 + 1):
-                            li_doctor_shedule_temp.append([li_jour[i]])
+                            li_doctor_shedule_temp.append(li_jour[i])
                         li_doctor_shedule.append(li_doctor_shedule_temp)
                     break
                     pass
             else:
                 print("Mauvais separateur")
-
+        elif 3 < len(choix) <= 13:
+            li_val = []
+            li_jours = []
+            val = 0
+            print(f"la longeure de choix est de: {len(choix)}")
+            for i in range(len(choix)):
+                if i % 2 != 0 and i != 0:
+                    if choix[i] != ';':
+                        # print(f"238 {choix[i]}")
+                        print(f"238 {choix[i]}Mauvais separateur!")
+                        break
+                    pass
+                elif i % 2 == 0:
+                    try:
+                        val = int(choix[i])
+                    except ValueError:
+                        print(f"246 {choix[i]}Valeur invalide!")
+                    else:
+                        li_val.append(val)
+            for i in li_val:
+                li_jours.append(li_jour[i])
+            li_doctor_shedule.append(li_jours)
+            break
     pass
 
 
