@@ -157,7 +157,8 @@ def save_complaints(num_dossier, plainte):
     pass
 
 
-def save_doctor_schedule():
+def save_doctor_schedule(matricule):
+    # oui elle fait beaucoup trop de chose :)
     li_jour = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI", "DIMANCHE"]
     print(
         f"\n{'':>30} {'0: LUNDI'}"
@@ -190,7 +191,7 @@ def save_doctor_schedule():
                 print("Valeur invalide!")
                 # choix = input()
             else:
-                li_doctor_shedule.append([li_jour[jour_p]])
+                li_doctor_shedule.append([matricule, li_jour[jour_p]])
                 break
 
         # On ajoute ce jour
@@ -204,7 +205,7 @@ def save_doctor_schedule():
                 except ValueError:
                     print("Valeur invalid!")
                 else:
-                    li_doctor_shedule.append([li_jour[jour_p_1], li_jour[jour_p_2]])
+                    li_doctor_shedule.append([matricule, li_jour[jour_p_1], li_jour[jour_p_2]])
                     break
 
             elif choix[1] == '-':
@@ -214,7 +215,7 @@ def save_doctor_schedule():
                 except ValueError:
                     print("Valeur invalid!")
                 else:
-                    li_doctor_shedule_temp = []
+                    li_doctor_shedule_temp = [matricule]
                     if jour_p_1 < jour_p_2:
                         for i in range(jour_p_1, jour_p_2+1):
                             li_doctor_shedule_temp.append(li_jour[i])
@@ -237,14 +238,14 @@ def save_doctor_schedule():
                 if i % 2 != 0 and i != 0:
                     if choix[i] != ';':
                         # print(f"238 {choix[i]}")
-                        print(f"238 {choix[i]}Mauvais separateur!")
-                        break
+                        print("Mauvais separateur!")
+                        # break
                     pass
                 elif i % 2 == 0:
                     try:
                         val = int(choix[i])
                     except ValueError:
-                        print(f"246 {choix[i]}Valeur invalide!")
+                        print("Valeur invalide!")
                     else:
                         li_val.append(val)
             for i in li_val:
@@ -316,6 +317,15 @@ def titre():
 
 def seppep():
     print('\n' * 2)
+
+
+def find_doctor(matricule):
+    mattt = matricule.upper()
+    for i in range(len(li_doctor)):
+        if mattt == li_doctor[i][4]:
+            return 1
+        if i == len(li_patient) - 1:
+            return 0
 
 
 def main():
@@ -396,8 +406,15 @@ def main():
                 pass
 
             case 9:
-                save_doctor_schedule()
+                print(f"{' ':>20} :ENREGISTREMENT DE L'HORRAIRE DU MEDCIN:\n")
+                matricule = input("Le matricule du medecin: ")
+                p_doc = find_doctor(matricule)
+                if p_doc == 1:
+                    save_doctor_schedule(matricule)
+                else:
+                    print(f"{' ':>20}Docteur introuvable!\n")
 
+                pass
             case _:
                 clear()
                 print(li_doctor_shedule)
