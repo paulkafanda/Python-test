@@ -2,7 +2,7 @@ import datetime
 import os
 
 # from rich.console import Console
-li_doctor = [["Mathieu", "Dan", "Du bois", "0906340486", "G1752/-", "pediatre"]]
+li_doctor = []
 li_patient = []
 di_patient = {}
 li_doctor_shedule = []
@@ -20,9 +20,6 @@ def clear():
         os.system('clear')
 
 
-# clear()
-
-
 def add_new_doctor(nom, postnom, prenom,
                    tel, specialisation):
     """
@@ -34,22 +31,23 @@ def add_new_doctor(nom, postnom, prenom,
     :param specialisation: ex(Pediatre)
     :return: void
     """
+    li_doctors = []
     dateact = datetime.datetime.now()
     annee = str(dateact.year)
     place = str(len(li_doctor) + 1)
     matricule = annee[-2:] + (nom[1]).upper() + (postnom[1]).upper() + place.zfill(3)
 
-    li_doctor.append(
+    li_doctors.append(
         [
             nom.upper(),
-            prenom.capitalize(),
             postnom.upper(),
+            prenom.capitalize(),
             tel,
             matricule.upper(),
             specialisation.upper()
         ]
     )
-    pass
+    return li_doctors
 
 
 def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
@@ -146,7 +144,22 @@ def show_patients():
 
 def show_doctor():
     for i in range(len(li_doctor)):
-        print(f"{' ':>27}", i + 1, " ".join(li_doctor[i]))
+        # print(f"{' ':>27}", i + 1, " ".join(li_doctor[i]))
+        print(li_doctor)
+        nom = li_doctor[i][0]
+        psnom = li_doctor[i][1]
+        prenom = li_doctor[i][2]
+        tel = li_doctor[i][3]
+        mat = li_doctor[i][4]
+        spe = li_doctor[i][5]
+        print(
+            f"{nom:10} "
+            f"{psnom:7} "
+            f"{prenom:7} "
+            f"{tel:10} "
+            f"{mat:7} "
+            f"{spe:4} "
+        )
     seppep()
     pass
 
@@ -255,7 +268,25 @@ def save_doctor_schedule(matricule):
     pass
 
 
-def doctor_appointement():
+def doctor_schedule(matricule):
+    if len(li_doctor) > 0:
+        for i in range(len(li_doctor_shedule)):
+            if li_doctor_shedule[i][0] == matricule:
+                return li_doctor_shedule[i][1:]
+    pass
+
+
+def doctor_appointement(matricule):
+    if len(li_doctor) == 0:
+        print("Il n'y a pas encore de medecin!")
+    else:
+        p_doc = find_doctor(matricule)
+        if p_doc == 1:
+            work = doctor_schedule(matricule)
+            print(f"Vous travaillerez: {work}")
+            pass
+        else:
+            print("Medecin introuvable!")
     pass
 
 
@@ -290,9 +321,13 @@ def menu():
           f"{' ':>30}{'2:':3} {'add_new_patient':30}".upper(),
           f"{' ':>30}{'3:':3} {'show_doctor':30}".upper(),
           f"{' ':>30}{'4:':3} {'show_patients':30}".upper(),
-          f"{' ':>30}{'5:':3} {'5':30}".upper(),
-          f"{' ':>30}{'6:':3} 6".upper(),
+          f"{' ':>30}{'5:':3} {'find patient by him name':30}".upper(),
+          f"{' ':>30}{'6:':3} {'find patient by him code'}".upper(),
           f"{' ':>30}{'7:':3} nettoyer le terminal".upper(),
+          f"{' ':>30}{'8:':3} {'show patient imc'}".upper(),
+          f"{' ':>30}{'9:':3} {'save doctor schedule'}".upper(),
+          f"{' ':>30}{'10:':3} {'find patient by him code'}".upper(),
+          f"{' ':>30}{'11:':3} {'verify doctor appointment'}".upper(),
           f"{' ':>30}{'un autre nombre pour quitter':30}".upper(),
           sep="\n")
 
@@ -324,7 +359,7 @@ def find_doctor(matricule):
     for i in range(len(li_doctor)):
         if mattt == li_doctor[i][4]:
             return 1
-        if i == len(li_patient) - 1:
+        elif i == len(li_patient) - 1:
             return 0
 
 
@@ -344,12 +379,15 @@ def main():
 
         match choice:
             case 1:
+                print(f"{' ':>20} :AJOUT D'UN DOCTEUR:\n")
                 nom, postnom, prenom, tel = nppt()
                 specialisation = input(f"{' ':>30}la Specialisation: ")
-                add_new_doctor(nom, postnom, prenom, tel, specialisation)
+                doc = add_new_doctor(nom, postnom, prenom, tel, specialisation)
+                li_doctor.append(doc)
                 pass
 
             case 2:
+                print(f"{' ':>20} :ENREGISTREMENT 'UN PATIENT:\n")
                 nom, postnom, prenom, tel = nppt()
                 while 1:
                     try:
@@ -378,29 +416,35 @@ def main():
 
                 pass
             case 3:
+                print(f"{' ':>30} :LISTES DES DOCTEURS:\n")
                 show_doctor()
                 pass
 
             case 4:
+                print(f"{' ':>20} :LISTE DES PATIENTS:\n")
                 show_patients()
                 pass
 
             case 5:
+                print(f"{' ':>20} :RECHERCHE DES PATIENTS:\n")
                 nom = input("Le nom du Patient: ")
                 find_patients(nom)
                 # pass
 
             case 6:
+                print(f"{' ':>20} :RECHERCHE D'UN PATIENT PRECI:\n")
                 numero_dossier = (input("Le numero du dossier: ")).upper()
                 find_patient(numero_dossier)
                 pass
 
             case 7:
+                print(f"{' ':>20} :NETTOYAGE DU TERMINAL:\n")
                 clear()
                 titre()
                 pass
 
             case 8:
+                print(f"{' ':>20} :AFFICHAGE DE L'IMC D'UN PATIENT DONNE:\n")
                 numero_dossier = (input("Le numero du dossier: ")).upper()
                 show_patient_imc(numero_dossier)
                 pass
@@ -415,9 +459,19 @@ def main():
                     print(f"{' ':>20}Docteur introuvable!\n")
 
                 pass
+            case 10:
+
+                pass
+
+            case 11:
+                print(f"{' ':>20} :AFFICHAGE DE L'AGENDA DU MEDECIN:\n")
+                matricule = (input("Le matricule du Medecin: ")).upper()
+                doctor_appointement(matricule)
+                pass
+
             case _:
                 clear()
-                print(li_doctor_shedule)
+                # print(li_doctor_shedule)
                 print(f"\n{' ':>20} {' FIN ':#^50}")
                 break
     pass
