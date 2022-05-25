@@ -20,6 +20,16 @@ def clear():
         os.system('clear')
 
 
+def find_doctor(matricule):
+    mattt = matricule.upper()
+    for i in range(len(li_doctor)):
+        if mattt == li_doctor[i][4]:
+            return 1
+        elif i == len(li_patient) - 1:
+            return 0
+
+
+
 def add_new_doctor(nom, postnom, prenom,
                    tel, specialisation):
     """
@@ -47,7 +57,7 @@ def add_new_doctor(nom, postnom, prenom,
             specialisation.upper()
         ]
     )
-    return li_doctors
+    return li_doctors[0][:]
 
 
 def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
@@ -352,15 +362,6 @@ def titre():
 
 def seppep():
     print('\n' * 2)
-
-
-def find_doctor(matricule):
-    mattt = matricule.upper()
-    for i in range(len(li_doctor)):
-        if mattt == li_doctor[i][4]:
-            return 1
-        elif i == len(li_patient) - 1:
-            return 0
 
 
 def main():
