@@ -131,21 +131,21 @@ def find_patient(li_patients, numero_dossier):
             return 0
 
 
-def show_patients():
-    for i in range(len(li_patient)):
+def show_patients(li_patients):
+    for i in range(len(li_patients)):
         # 2
         # print(f"{' ':>30}", i + 1, " ".join(li_patient[i]))
         print(
-            f"{li_patient[i][0]:10} "
-            f"{li_patient[i][1]:10} "
-            f"{li_patient[i][2]:10} "
-            f"{li_patient[i][3]:10} "
-            f"{li_patient[i][4]:5} "
-            f"{li_patient[i][5]:4} "
-            f"{li_patient[i][6]:1} "
-            f"{li_patient[i][7]:3} "
-            f"{li_patient[i][8]:10} "
-            f"{li_patient[i][9]:5}"
+            f"{li_patients[i][0]:10} "
+            f"{li_patients[i][1]:10} "
+            f"{li_patients[i][2]:10} "
+            f"{li_patients[i][3]:10} "
+            f"{li_patients[i][4]:5} "
+            f"{li_patients[i][5]:4} "
+            f"{li_patients[i][6]:1} "
+            f"{li_patients[i][7]:3} "
+            f"{li_patients[i][8]:10} "
+            f"{li_patients[i][9]:5}"
         )
     seppep()
     pass
@@ -425,19 +425,19 @@ def main():
 
             case 4:
                 print(f"{' ':>20} :LISTE DES PATIENTS:\n")
-                show_patients()
+                show_patients(li_patient)     # MUST CHECK::::
                 pass
 
             case 5:
                 print(f"{' ':>20} :RECHERCHE DES PATIENTS:\n")
                 nom = input("Le nom du Patient: ")
-                find_patients(nom)
+                find_patients(li_patient, nom)
                 # pass
 
             case 6:
                 print(f"{' ':>20} :RECHERCHE D'UN PATIENT PRECI:\n")
                 numero_dossier = (input("Le numero du dossier: ")).upper()
-                find_patient(numero_dossier)
+                find_patient(li_patient, numero_dossier)
                 pass
 
             case 7:
