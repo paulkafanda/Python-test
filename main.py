@@ -20,12 +20,17 @@ def clear():
         os.system('clear')
 
 
-def find_doctor(matricule):
+def find_doctor(li_doc: list, matricule: str):
+    """
+    this fonction check if a doctor are or not registered by him matricule
+    :param li_doc: list that will contain all doctors information_s
+    :param matricule: string that is the doctor's matricule
+    """
     mattt = matricule.upper()
-    for i in range(len(li_doctor)):
-        if mattt == li_doctor[i][4]:
+    for i in range(len(li_doc)):
+        if mattt == li_doc[i][4]:
             return 1
-        elif i == len(li_patient) - 1:
+        elif i == len(li_doc) - 1:
             return 0
 
 
@@ -290,7 +295,7 @@ def doctor_appointement(matricule):
     if len(li_doctor) == 0:
         print("Il n'y a pas encore de medecin!")
     else:
-        p_doc = find_doctor(matricule)
+        p_doc = find_doctor(li_doctor, matricule)      # must be modified
         if p_doc == 1:
             work = doctor_schedule(matricule)
             print(f"Vous travaillerez: {work}")
@@ -453,7 +458,7 @@ def main():
             case 9:
                 print(f"{' ':>20} :ENREGISTREMENT DE L'HORRAIRE DU MEDCIN:\n")
                 matricule = input("Le matricule du medecin: ")
-                p_doc = find_doctor(matricule)
+                p_doc = find_doctor(li_doctor, matricule)      # MUST BE MODIFIED
                 if p_doc == 1:
                     save_doctor_schedule(matricule)
                 else:
