@@ -1,6 +1,7 @@
 import datetime
 import os
 import doctor
+import patient
 
 # from rich.console import Console
 li_doctor = []
@@ -22,11 +23,26 @@ def clear():
 
 
 def load_numero_dossier(li_patients, nom, postnom, prenom, genre):
+    """This function will generate a unique directory nomber for given patient
+    :param li_patients:
+    :param nom:
+    :param postnom:
+    :param prenom:
+    :param genre:
+    """
     dateact = datetime.datetime.now()
     annee = str(dateact.year)
     place = str(len(li_patients) + 1)
 
     return genre.upper() + nom[0] + postnom[0] + prenom[0] + annee[-2:] + place.zfill(4)
+
+
+def find_patient_npp(li_patients, nom, postnom, prenom):
+    for i in range(len(li_patients)):
+        if nom in li_patients[i][0] and postnom in li_patients[i][1] and prenom in li_patients[i][2]:
+            return i
+        else:
+            return None
 
 
 def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre, age):
@@ -43,11 +59,12 @@ def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre
     :param age:
     :return: list of patient informations
     """
-    numero_dossier = load_numero_dossier(li_patients, nom, postnom, prenom, genre)
-    imc = poids / (taille ** 2)
+    i = find_patient_npp(li_patients, nom, postnom, prenom)
+    if isinstance(i, int):
 
-    li_patient.append(
-        [
+        imc = poids / (taille ** 2)
+
+        li_patient_temp = [
             nom.upper(),
             postnom.upper(),
             prenom.capitalize(),
@@ -56,10 +73,29 @@ def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre
             str(taille),
             genre.upper(),
             str(age),
-            numero_dossier.upper(),
+            li_patients[i][8],
             str(imc)
         ]
-    )
+        li_patients[i] = li_patient_temp[:]
+        pass
+    else:
+        numero_dossier = load_numero_dossier(li_patients, nom, postnom, prenom, genre)
+        imc = poids / (taille ** 2)
+
+        li_patient.append(
+            [
+                nom.upper(),
+                postnom.upper(),
+                prenom.capitalize(),
+                tel,
+                str(poids),
+                str(taille),
+                genre.upper(),
+                str(age),
+                numero_dossier.upper(),
+                str(imc)
+            ]
+        )
 
     return li_patient[0]
 
