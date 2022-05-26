@@ -21,12 +21,18 @@ def clear():
         os.system('clear')
 
 
+def load_numero_dossier(li_patients, nom, postnom, prenom, genre):
+    dateact = datetime.datetime.now()
+    annee = str(dateact.year)
+    place = str(len(li_patients) + 1)
+
+    return genre.upper() + nom[0] + postnom[0] + prenom[0] + annee[-2:] + place.zfill(4)
 
 
-
-def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
+def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre, age):
     """
 
+    :param li_patients:
     :param nom:
     :param postnom:
     :param prenom:
@@ -37,10 +43,7 @@ def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
     :param age:
     :return: list of patient informations
     """
-    dateact = datetime.datetime.now()
-    annee = str(dateact.year)
-    place = str(len(li_patient) + 1)
-    numero_dossier = genre.upper() + nom[0] + postnom[0] + prenom[0] + annee[-2:] + place.zfill(4)
+    numero_dossier = load_numero_dossier(li_patients, nom, postnom, prenom, genre)
     imc = poids / (taille ** 2)
 
     li_patient.append(
@@ -57,7 +60,8 @@ def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
             str(imc)
         ]
     )
-    return li_patient
+
+    return li_patient[0]
 
 
 def find_patients(nom):
@@ -376,7 +380,7 @@ def main():
                     except ValueError:
                         print(f"{' ':>30}Entrez un nombre!: ")
 
-                add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age)
+                add_new_patient(li_doctor, nom, postnom, prenom, tel, poids, taille, genre, age)
 
                 pass
             case 3:

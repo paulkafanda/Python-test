@@ -52,4 +52,4 @@ def add_new_doctor(li_doctor: list, nom: str, postnom: str, prenom: str, tel: st
             specialisation.upper()
         ]
     )
-    return li_doctors[0][:]
+    return li_doctors[0]
