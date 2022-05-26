@@ -32,9 +32,9 @@ def add_new_doctor(li_doctor: list, nom: str, postnom: str, prenom: str, tel: st
     """
 
     :param li_doctor: list tof all doctors
-    :param nom: ex(KAFANDA)
-    :param postnom: ex(NDALA)
-    :param prenom: ex(Paul)
+    :param nom: name of a doctor ex(KAFANDA)
+    :param postnom: sub name of a doctor ex(NDALA)
+    :param prenom: first name oex(Paul)
     :param tel: num de tel
     :param specialisation: ex(Pediatre)
     :return: void
