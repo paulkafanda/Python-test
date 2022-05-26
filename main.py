@@ -102,39 +102,33 @@ def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre
     return li_patient[0]
 
 
-def find_patients(nom):
-    nom = nom.upper()
-    for i in range(len(li_patient)):
-        if nom == li_patient[i][0] or nom == li_patient[i][1] \
-                or nom.capitalize() == li_patient[i][2] or nom == " ".join(li_patient[i][:3]):
-            print(
-                  f"{li_patient[i][0]:10} "
-                  f"{li_patient[i][1]:10} "
-                  f"{li_patient[i][2]:10} "
-                  f"{li_patient[i][3]:10} "
-                  f"{li_patient[i][4]:5} "
-                  f"{li_patient[i][5]:4} "
-                  f"{li_patient[i][6]:1} "
-                  f"{li_patient[i][7]:3} "
-                  f"{li_patient[i][8]:10} "
-                  f"{li_patient[i][9]:5}"
-            )
-            # print(f"{' ':>30}", " ".join(li_patient[i]))
-            # pass
-    # pass
+def find_patients(li_patients, nom):
+    if len(li_patients) == 0:
+        return None
+
+    else:
+        nom = nom.upper()
+        li_place = []
+        for i in range(len(li_patient)):
+            if nom == li_patients[i][0] or nom == li_patients[i][1] \
+                    or nom.capitalize() == li_patients[i][2] or nom == " ".join(li_patients[i][:3]).upper():
+                li_place.append(i)
+        if len(li_place) == 0:
+            return 0
+        else:
+            return li_place
 
 
-def find_patient(numero_dossier):
+def find_patient(li_patients, numero_dossier):
     mattt = numero_dossier
     mat_p = 0
-    for i in range(len(li_patient)):
-        if mattt == li_patient[i][8]:
+    for i in range(len(li_patients)):
+        if mattt == li_patients[i][8]:
             print(f"{' ':>30}", " ".join(li_patient[i]))
-            mat_p = 1
-            break
+            return i
+
         if mat_p == 0 and i == len(li_patient) - 1:
-            print(f"{' ':>30}Inconnu!")
-    pass
+            return 0
 
 
 def show_patients():
@@ -327,7 +321,7 @@ def show_patient_imc(numero_dossier):
             mat_p = 1
             break
         if mat_p == 0 and i == len(li_patient) - 1:
-            print(f"{' ':>30}Inconnu!")
+            return 0
     pass
 
 
