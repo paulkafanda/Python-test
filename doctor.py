@@ -15,10 +15,23 @@ def find_doctor(li_doc: list, matricule: str):
             return 0
 
 
-def add_new_doctor(nom, postnom, prenom,
-                   tel, specialisation):
+def load_matricule(li_doctor: list, nom: str, postnom: str):
+    """This fonction genered a matricule
+    :param li_doctor: list of all doctors
+    :param nom: name of the doctor
+    :param postnom: sub name of the doctor
+    """
+    dateact = datetime.datetime.now()
+    annee = str(dateact.year)
+    place = str(len(li_doctor) + 1)
+
+    return annee[-2:] + (nom[1]).upper() + (postnom[1]).upper() + place.zfill(3)
+
+
+def add_new_doctor(li_doctor: list, nom: str, postnom: str, prenom: str, tel: str, specialisation: str):
     """
 
+    :param li_doctor: list tof all doctors
     :param nom: ex(KAFANDA)
     :param postnom: ex(NDALA)
     :param prenom: ex(Paul)
@@ -27,10 +40,7 @@ def add_new_doctor(nom, postnom, prenom,
     :return: void
     """
     li_doctors = []
-    dateact = datetime.datetime.now()
-    annee = str(dateact.year)
-    place = str(len(li_doctor) + 1)
-    matricule = annee[-2:] + (nom[1]).upper() + (postnom[1]).upper() + place.zfill(3)
+    matricule = load_matricule(li_doctor, nom, postnom)
 
     li_doctors.append(
         [
