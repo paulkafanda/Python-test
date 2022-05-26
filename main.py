@@ -1,7 +1,7 @@
 import datetime
 import os
+
 import doctor
-import patient
 
 # from rich.console import Console
 li_doctor = []
@@ -39,7 +39,7 @@ def load_numero_dossier(li_patients, nom, postnom, prenom, genre):
 
 def find_patient_npp(li_patients, nom, postnom, prenom):
     for i in range(len(li_patients)):
-        if nom in li_patients[i][0] and postnom in li_patients[i][1] and prenom in li_patients[i][2]:
+        if nom == li_patients[i][0] and postnom == li_patients[i][1] and prenom == li_patients[i][2]:
             return i
         else:
             return None
@@ -61,7 +61,7 @@ def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre
     """
     i = find_patient_npp(li_patients, nom, postnom, prenom)
     if isinstance(i, int):
-
+        print("::present::")
         imc = poids / (taille ** 2)
 
         li_patient_temp = [
@@ -76,7 +76,9 @@ def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre
             li_patients[i][8],
             str(imc)
         ]
-        li_patients[i] = li_patient_temp[:]
+        for k in range(li_patients[i]):
+            li_patients[i][k] = li_patient_temp[k]
+        # li_patients[i] = li_patient_temp[:]
         pass
     else:
         numero_dossier = load_numero_dossier(li_patients, nom, postnom, prenom, genre)
@@ -158,7 +160,7 @@ def show_patients():
 def show_doctor():
     for i in range(len(li_doctor)):
         # print(f"{' ':>27}", i + 1, " ".join(li_doctor[i]))
-        print(li_doctor)
+        # print(li_doctor)
         nom = li_doctor[i][0]
         psnom = li_doctor[i][1]
         prenom = li_doctor[i][2]
@@ -346,9 +348,9 @@ def menu():
 
 
 def nppt():
-    nom = input(f"{' ':>30}le nom: ")
-    postnom = input(f"{' ':>30}le Post-nom: ")
-    prenom = input(f"{' ':>30}le Prenom: ")
+    nom = input(f"{' ':>30}le nom: ").upper()
+    postnom = input(f"{' ':>30}le Post-nom: ").upper()
+    prenom = input(f"{' ':>30}le Prenom: ").capitalize()
     tel = input(f"{' ':>30}le Tel: ")
 
     return nom, postnom, prenom, tel
@@ -415,8 +417,11 @@ def main():
                         break
                     except ValueError:
                         print(f"{' ':>30}Entrez un nombre!: ")
-
-                add_new_patient(li_doctor, nom, postnom, prenom, tel, poids, taille, genre, age)
+                k = find_patient_npp(li_patient, nom, postnom, prenom)
+                if isinstance(k, int):
+                    pass
+                else:
+                    add_new_patient(li_doctor, nom, postnom, prenom, tel, poids, taille, genre, age)
 
                 pass
             case 3:
