@@ -35,7 +35,7 @@ def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
     :param taille:
     :param genre:
     :param age:
-    :return:
+    :return: list of patient informations
     """
     dateact = datetime.datetime.now()
     annee = str(dateact.year)
@@ -57,8 +57,7 @@ def add_new_patient(nom, postnom, prenom, tel, poids, taille, genre, age):
             str(imc)
         ]
     )
-    # save_complaints(num_dossier, plainte)
-    pass
+    return li_patient
 
 
 def find_patients(nom):
