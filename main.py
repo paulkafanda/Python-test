@@ -125,11 +125,11 @@ def find_patient(li_patients, numero_dossier):
     mat_p = 0
     for i in range(len(li_patients)):
         if mattt == li_patients[i][8]:
-            print(f"{' ':>30}", " ".join(li_patient[i]))
+            # print(f"{' ':>30}", " ".join(li_patients[i]))
             return i
 
         # if mat_p == 0 and i == len(li_patient) - 1:
-    return 0
+    return None
 
 
 def show_patients(li_patients):
@@ -185,16 +185,23 @@ def save_complaints(li_patients: list, li_complains: list, num_dossier: str, pla
     i = find_patient(li_patients, num_dossier)
     k = find_fiche_complaint(li_complains, num_dossier)
 
-    # S'il esiste
+    # S'il esiste(le patient)
     if isinstance(i, int):
         # S'il n'y pas encore de Plainte donc pas de fiche
         if len(li_complains) == 0:
-            li_complain[0].append(num_dossier)
-            li_complain[0].append(plainte)
+            li_complains.append(num_dossier)
+            li_complains.append(plainte)
 
         # S'il a deja une fiche
         elif isinstance(k, int):
             li_complains[k].append(plainte)
+
+        # S'il n'a pas encore de fiche
+        elif not isinstance(k, int):
+            li_complains.append([num_dossier, plainte])
+        return 1
+    else:
+        return 0
 
 
 def save_doctor_schedule(matricule):
