@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5373705d-b6f7-47fa-85a3-9d13c3d3b2e4" name="Changes" comment="correction du bug(horraire medecin) sur les chaines contenant x car: 3 &lt; x &lt; 13">
+    <list default="true" id="5373705d-b6f7-47fa-85a3-9d13c3d3b2e4" name="Changes" comment="corection of somes bugs in save_complaints">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\paul\PycharmProjects\python Test\cevages_rapports" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -26,8 +31,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/doctor.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main_db.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/patient.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test_main.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -38,14 +46,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "C:/Users/paul/PycharmProjects/PyCharmLearningProject/venv/Scripts/pip3.10.exe",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/paul/PycharmProjects/python Test/cevages_rapports&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="PyCoverageOptionsProvider">
+    <option name="myUseBundledCoveragePy" value="true" />
+  </component>
+  <component name="RunManager" selected="Python tests.Python tests for test_main.Test">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="python Test" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -56,16 +74,91 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_find_doctor.Test" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="python Test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_find_doctor.Test&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_main.Test" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="python Test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_main.Test&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_main.Test.test_add_new_patient" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="python Test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_main.Test.test_add_new_patient&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_main.Test.test_find_patient_npp" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="python Test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_main.Test.test_find_patient_npp&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python tests.Python tests for test_main.Test" />
+      <item itemvalue="Python tests.Python tests for test_main.Test.test_add_new_patient" />
+      <item itemvalue="Python tests.Python tests for test_main.Test.test_find_patient_npp" />
+      <item itemvalue="Python tests.Python tests for test_find_doctor.Test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for test_main.Test" />
+        <item itemvalue="Python tests.Python tests for test_main.Test.test_add_new_patient" />
+        <item itemvalue="Python tests.Python tests for test_main.Test.test_find_patient_npp" />
+        <item itemvalue="Python tests.Python tests for test_find_doctor.Test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -75,6 +168,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652556522372</updated>
+      <workItem from="1653507045349" duration="975000" />
     </task>
     <task id="LOCAL-00001" summary="ajout du fichier principal">
       <created>1652607794502</created>
@@ -167,8 +261,130 @@
       <option name="project" value="LOCAL" />
       <updated>1653393871151</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ajout d'options dans menu">
+      <created>1653501554699</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1653501554699</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Correction de add_new_doctor">
+      <created>1653522447955</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1653522447955</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add documentation and correct some bugsfind_doctor(matricule)">
+      <created>1653523791501</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1653523791501</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add doctor.py &amp; patient.py">
+      <created>1653524464761</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1653524464761</updated>
+    </task>
+    <task id="LOCAL-00018" summary="share find_doctor from main.py to doctor.py">
+      <created>1653524789094</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1653524789095</updated>
+    </task>
+    <task id="LOCAL-00019" summary="share add_new_doctor from main.py to doctor.py">
+      <created>1653524944994</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1653524944994</updated>
+    </task>
+    <task id="LOCAL-00020" summary="add new function load_matricule &amp; perform add_new_doctor">
+      <created>1653525991984</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1653525991984</updated>
+    </task>
+    <task id="LOCAL-00021" summary="complete add_new_doctor's documentation">
+      <created>1653526775435</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1653526775435</updated>
+    </task>
+    <task id="LOCAL-00022" summary="correct some bugs in case 1 in main">
+      <created>1653526983745</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1653526983745</updated>
+    </task>
+    <task id="LOCAL-00023" summary="add_new_patient return value">
+      <created>1653527577141</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1653527577141</updated>
+    </task>
+    <task id="LOCAL-00024" summary="simplify add_new_doctor return">
+      <created>1653528159679</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1653528159679</updated>
+    </task>
+    <task id="LOCAL-00025" summary="add_new_patient are now able to remind old patient">
+      <created>1653533035759</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1653533035759</updated>
+    </task>
+    <task id="LOCAL-00026" summary="npptp main add_new_patient">
+      <created>1653604401844</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1653604401844</updated>
+    </task>
+    <task id="LOCAL-00027" summary="ameliration de find_patients(renvoi de valeur)">
+      <created>1653606966782</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1653606966782</updated>
+    </task>
+    <task id="LOCAL-00028" summary="show_patient and all where called, set input">
+      <created>1653608560072</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1653608560072</updated>
+    </task>
+    <task id="LOCAL-00029" summary="add new function save complaints &amp; find_complaint">
+      <created>1653611689771</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1653611689771</updated>
+    </task>
+    <task id="LOCAL-00030" summary="corection of somes bugs in save_complaints">
+      <created>1653682688497</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1653682688497</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -182,7 +398,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ajout du fichier principal" />
     <MESSAGE value="add_new_doctor" />
     <MESSAGE value="add_new_patient" />
     <MESSAGE value="iaaffss depart de ces fonctions" />
@@ -191,6 +406,27 @@
     <MESSAGE value="correction d'un bug(recherche d'un patient a partir de son nom)" />
     <MESSAGE value="ajout d'une fonctionnalites(horraire medecin)" />
     <MESSAGE value="correction du bug(horraire medecin) sur les chaines contenant x car: 3 &lt; x &lt; 13" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction du bug(horraire medecin) sur les chaines contenant x car: 3 &lt; x &lt; 13" />
+    <MESSAGE value="ajout d'options dans menu" />
+    <MESSAGE value="Correction de add_new_doctor" />
+    <MESSAGE value="add documentation and correct some bugsfind_doctor(matricule)" />
+    <MESSAGE value="add doctor.py &amp; patient.py" />
+    <MESSAGE value="share find_doctor from main.py to doctor.py" />
+    <MESSAGE value="share add_new_doctor from main.py to doctor.py" />
+    <MESSAGE value="add new function load_matricule &amp; perform add_new_doctor" />
+    <MESSAGE value="complete add_new_doctor's documentation" />
+    <MESSAGE value="correct some bugs in case 1 in main" />
+    <MESSAGE value="add_new_patient return value" />
+    <MESSAGE value="simplify add_new_doctor return" />
+    <MESSAGE value="add_new_patient are now able to remind old patient" />
+    <MESSAGE value="npptp main add_new_patient" />
+    <MESSAGE value="ameliration de find_patients(renvoi de valeur)" />
+    <MESSAGE value="show_patient and all where called, set input" />
+    <MESSAGE value="add new function save complaints &amp; find_complaint" />
+    <MESSAGE value="corection of somes bugs in save_complaints" />
+    <option name="LAST_COMMIT_MESSAGE" value="corection of somes bugs in save_complaints" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/python_Test$main.coverage" NAME="main Coverage Results" MODIFIED="1653601945964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python_Test$.coverage" NAME=" Coverage Results" MODIFIED="1653680620012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

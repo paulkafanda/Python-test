@@ -302,10 +302,13 @@ def save_doctor_schedule(matricule):
     pass
 
 
-def doctor_schedule(matricule):
-    if len(li_doctor) > 0:
-        for i in range(len(li_doctor_shedule)):
-            if li_doctor_shedule[i][0] == matricule:
+def doctor_schedule(li_doctors: list, li_doctor_shedules: list, matricule: str):
+    matricule = matricule.upper()
+
+    # si il y'a au moins 1 medecin
+    if len(li_doctors) > 0:
+        for i in range(len(li_doctor_shedules)):
+            if li_doctor_shedules[i][0] == matricule:
                 return li_doctor_shedule[i][1:]
     pass
 
