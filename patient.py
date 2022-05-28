@@ -189,14 +189,16 @@ def show_patient_imc(li_patients, numero_dossier):
         return None
 
 
-def show_patient_complaints(li_patients, numero_dossier):
-    mattt = numero_dossier
-    mat_p = 0
-    for i in range(len(li_patients)):
-        if mattt == li_patients[i][8]:
-            print(f"{' ':>30}", li_patients[i][9])
-            mat_p = 1
-            break
-        if mat_p == 0 and i == len(li_patients) - 1:
-            print(f"{' ':>30}Inconnu!")
+def show_patient_complaints(li_patients, li_complains, numero_dossier):
+    i = find_patient(li_patients, numero_dossier)
+    if isinstance(i, int):
+        f = find_fiche_complaint(li_complains, numero_dossier)
+        if isinstance(f, int):
+            print(f"{li_complains[f][:]}")
+            pass
+        else:
+            print(f"{' ':>30}Aucune Plainte!")
+    else:
+        print(f"{' ':>30}Patient Inconnu!")
+        pass
     pass
