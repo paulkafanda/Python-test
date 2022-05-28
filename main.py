@@ -337,16 +337,34 @@ def show_patient_complaints(li_patients, numero_dossier):
 
 
 def show_patient_imc(li_patients, numero_dossier):
-    mattt = numero_dossier
-    mat_p = 0
-    for i in range(len(li_patients)):
-        if mattt == li_patients[i][8]:
-            print(f"{' ':>30}", li_patients[i][9])
-            mat_p = 1
-            break
-        if mat_p == 0 and i == len(li_patients) - 1:
-            return 0
-    pass
+    li_status_imc = [
+        "Insuffisance pondérale (maigreur)",
+        "Corpulence normale",
+        "Surpoids",
+        "Obésité modérée",
+        "Obésité sévère",
+        "Obésité morbide ou massive"
+    ]
+    f = find_patient(li_patients, numero_dossier)
+
+    if isinstance(f, int):
+        imc = li_patients[f][9]
+
+        if imc < 18.5:
+            return li_status_imc[0]
+        elif 18.5 <= imc < 25:
+            return li_status_imc[1]
+        elif 25 <= imc < 30:
+            return li_status_imc[2]
+        elif 30 <= imc < 35:
+            return li_status_imc[3]
+        elif 35 <= imc < 40:
+            return li_status_imc[4]
+        else:
+            return li_status_imc[5]
+
+    else:
+        return None
 
 
 def menu():
