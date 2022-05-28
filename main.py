@@ -148,21 +148,13 @@ def show_patients(li_patients):
 
 def show_doctor(li_doctors):
     for i in range(len(li_doctors)):
-        # print(f"{' ':>27}", i + 1, " ".join(li_doctor[i]))
-        # print(li_doctor)
-        nom = li_doctors[i][0]
-        psnom = li_doctors[i][1]
-        prenom = li_doctors[i][2]
-        tel = li_doctors[i][3]
-        mat = li_doctors[i][4]
-        spe = li_doctors[i][5]
         print(
-            f"{nom:10} "
-            f"{psnom:7} "
-            f"{prenom:7} "
-            f"{tel:10} "
-            f"{mat:7} "
-            f"{spe:4} "
+            f"{li_doctors[i][0]:10} "
+            f"{li_doctors[i][1]:7} "
+            f"{li_doctors[i][2]:7} "
+            f"{li_doctors[i][3]:10} "
+            f"{li_doctors[i][4]:7} "
+            f"{li_doctors[i][5]:4} "
         )
     seppep()
     pass
@@ -198,7 +190,7 @@ def save_complaints(li_patients: list, li_complains: list, num_dossier: str, pla
         return 0
 
 
-def menu_day(marge=30):
+def menu_day(marge=30):     # MUST CHECK:::
     print(
         f"\n{'':>{marge}} {'0: LUNDI'}",
         f"\n{'':>{marge}} {'1: MARDI'}",
@@ -211,15 +203,22 @@ def menu_day(marge=30):
     )
 
 
-def save_doctor_schedule(li_doctors, li_doctor_shedules, matricule):
+def save_doctor_schedule(li_doctors: list, li_doctor_shedules: list, matricule: str, horaire: str):
     # oui elle fait beaucoup trop de chose :)
     li_jour = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI", "DIMANCHE"]
 
+    # menu_day()
 
     # Si la choix est vide l'on doit reentrer une valeur
     # si choix contient 1 car on essaie de le convertir en entier
     # puis on ajoute dans li_doctor_shedule, le jour qui porte cet indice dans li_jour
-    # if len(choix) == 1:
+
+    i = doctor.find_doctor(li_doctors, matricule)
+    if i == 0:
+        return None
+
+    else:
+        pass
     while 1:
         choix = input(
             "Choisissez un jour ex:1 pour Mardi\n"
