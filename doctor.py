@@ -5,14 +5,17 @@ def find_doctor(li_doc: list, matricule: str):
     """
     this fonction check if a doctor are or not registered by him matricule
     :param li_doc: list that will contain all doctors information_s
-    :param matricule: string that is the doctor's matricule
+    :param matricule: string that is the doctor's matricule\n
+
+    return position of doctor in li_doc, else
+    :return None: if not found
     """
     mattt = matricule.upper()
     for i in range(len(li_doc)):
         if mattt == li_doc[i][4]:
             return 1
 
-    return 0
+    return None
 
 
 def load_matricule(li_doctor: list, nom: str, postnom: str):
