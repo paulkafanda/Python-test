@@ -1,4 +1,5 @@
 import datetime
+from main import seppep
 
 
 def find_doctor(li_doc: list, matricule: str):
@@ -56,3 +57,17 @@ def add_new_doctor(li_doctor: list, nom: str, postnom: str, prenom: str, tel: st
         ]
     )
     return li_doctors[0]
+
+
+def show_doctor(li_doctors):
+    for i in range(len(li_doctors)):
+        print(
+            f"{li_doctors[i][0]:10} "
+            f"{li_doctors[i][1]:7} "
+            f"{li_doctors[i][2]:7} "
+            f"{li_doctors[i][3]:10} "
+            f"{li_doctors[i][4]:7} "
+            f"{li_doctors[i][5]:4} "
+        )
+    seppep()
+    pass
