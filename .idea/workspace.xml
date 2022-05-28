@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5373705d-b6f7-47fa-85a3-9d13c3d3b2e4" name="Changes" comment="corection of somes bugs in save_complaints">
+    <list default="true" id="5373705d-b6f7-47fa-85a3-9d13c3d3b2e4" name="Changes" comment="simplify find_doctor in doctor.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -35,7 +35,6 @@
     <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main_db.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/patient.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test_main.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,7 +60,7 @@
   <component name="PyCoverageOptionsProvider">
     <option name="myUseBundledCoveragePy" value="true" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_main.Test">
+  <component name="RunManager" selected="Python.patient">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="python Test" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -79,6 +78,28 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="patient" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="python Test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/patient.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
@@ -146,6 +167,7 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.patient" />
       <item itemvalue="Python tests.Python tests for test_main.Test" />
       <item itemvalue="Python tests.Python tests for test_main.Test.test_add_new_patient" />
       <item itemvalue="Python tests.Python tests for test_main.Test.test_find_patient_npp" />
@@ -153,6 +175,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.patient" />
         <item itemvalue="Python tests.Python tests for test_main.Test" />
         <item itemvalue="Python tests.Python tests for test_main.Test.test_add_new_patient" />
         <item itemvalue="Python tests.Python tests for test_main.Test.test_find_patient_npp" />
@@ -380,7 +403,42 @@
       <option name="project" value="LOCAL" />
       <updated>1653682688497</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="all input in every function receive data by argument">
+      <created>1653731959451</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1653731959451</updated>
+    </task>
+    <task id="LOCAL-00032" summary="show_imc_ return a string that match with the given imc">
+      <created>1653733697332</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1653733697332</updated>
+    </task>
+    <task id="LOCAL-00033" summary="menu &amp; nppt receive marge">
+      <created>1653734536772</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1653734536772</updated>
+    </task>
+    <task id="LOCAL-00034" summary="add new function menu_day">
+      <created>1653735356706</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1653735356706</updated>
+    </task>
+    <task id="LOCAL-00035" summary="simplify find_doctor in doctor.py">
+      <created>1653735972280</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1653735972280</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,11 +456,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add_new_doctor" />
-    <MESSAGE value="add_new_patient" />
-    <MESSAGE value="iaaffss depart de ces fonctions" />
-    <MESSAGE value="nppt avec controle de saisi" />
-    <MESSAGE value="ajout de quelques fonctionnalites" />
     <MESSAGE value="correction d'un bug(recherche d'un patient a partir de son nom)" />
     <MESSAGE value="ajout d'une fonctionnalites(horraire medecin)" />
     <MESSAGE value="correction du bug(horraire medecin) sur les chaines contenant x car: 3 &lt; x &lt; 13" />
@@ -423,10 +476,18 @@
     <MESSAGE value="show_patient and all where called, set input" />
     <MESSAGE value="add new function save complaints &amp; find_complaint" />
     <MESSAGE value="corection of somes bugs in save_complaints" />
-    <option name="LAST_COMMIT_MESSAGE" value="corection of somes bugs in save_complaints" />
+    <MESSAGE value="all input in every function receive data by argument" />
+    <MESSAGE value="show_imc_ return a string that match with the given imc" />
+    <MESSAGE value="menu &amp; nppt receive marge" />
+    <MESSAGE value="add new function menu_day" />
+    <MESSAGE value="simplify find_doctor in doctor.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="simplify find_doctor in doctor.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/python_Test$main.coverage" NAME="main Coverage Results" MODIFIED="1653601945964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/python_Test$.coverage" NAME=" Coverage Results" MODIFIED="1653680620012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python_Test$patient.coverage" NAME="patient Coverage Results" MODIFIED="1653739849690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python_Test$.coverage" NAME=" Coverage Results" MODIFIED="1653694256262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python_Test$pytest_in_python_Test.coverage" NAME="pytest in python Test Coverage Results" MODIFIED="1653693772822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/python_Test$Unittests_in_test.coverage" NAME="Unittests in test Coverage Results" MODIFIED="1653694242134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
