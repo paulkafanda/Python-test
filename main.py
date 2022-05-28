@@ -4,13 +4,7 @@ import os
 import doctor
 
 # from rich.console import Console
-li_doctor = []
-li_patient = []
-di_patient = {}
-li_complain = []
-li_doctor_shedule = []
-len_doc, len_pat = len(li_doctor), len(li_patient)
-debut = 0
+
 
 # fonction anonyme qui nettoye le terminal
 # clear = lambda: os.system('cls' if os.name == 'nt' else 'clear')
@@ -85,7 +79,7 @@ def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre
         numero_dossier = load_numero_dossier(li_patients, nom, postnom, prenom, genre)
         imc = poids / (taille ** 2)
 
-        li_patient.append(
+        li_patients.append(
             [
                 nom.upper(),
                 postnom.upper(),
@@ -100,7 +94,7 @@ def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre
             ]
         )
 
-    return li_patient[0]
+    return li_patients[0]
 
 
 def find_patients(li_patients, nom):
@@ -110,7 +104,7 @@ def find_patients(li_patients, nom):
     else:
         nom = nom.upper()
         li_place = []
-        for i in range(len(li_patient)):
+        for i in range(len(li_patients)):
             if nom == li_patients[i][0] or nom == li_patients[i][1] \
                     or nom.capitalize() == li_patients[i][2] or nom == " ".join(li_patients[i][:3]).upper():
                 li_place.append(i)
@@ -152,16 +146,16 @@ def show_patients(li_patients):
     pass
 
 
-def show_doctor():
-    for i in range(len(li_doctor)):
+def show_doctor(li_doctors):
+    for i in range(len(li_doctors)):
         # print(f"{' ':>27}", i + 1, " ".join(li_doctor[i]))
         # print(li_doctor)
-        nom = li_doctor[i][0]
-        psnom = li_doctor[i][1]
-        prenom = li_doctor[i][2]
-        tel = li_doctor[i][3]
-        mat = li_doctor[i][4]
-        spe = li_doctor[i][5]
+        nom = li_doctors[i][0]
+        psnom = li_doctors[i][1]
+        prenom = li_doctors[i][2]
+        tel = li_doctors[i][3]
+        mat = li_doctors[i][4]
+        spe = li_doctors[i][5]
         print(
             f"{nom:10} "
             f"{psnom:7} "
@@ -204,7 +198,7 @@ def save_complaints(li_patients: list, li_complains: list, num_dossier: str, pla
         return 0
 
 
-def save_doctor_schedule(matricule):
+def save_doctor_schedule(li_doctor_shedules, matricule):
     # oui elle fait beaucoup trop de chose :)
     li_jour = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI", "DIMANCHE"]
     print(
@@ -238,7 +232,7 @@ def save_doctor_schedule(matricule):
                 print("Valeur invalide!")
                 # choix = input()
             else:
-                li_doctor_shedule.append([matricule, li_jour[jour_p]])
+                li_doctor_shedules.append([matricule, li_jour[jour_p]])
                 break
 
         # On ajoute ce jour
@@ -252,7 +246,7 @@ def save_doctor_schedule(matricule):
                 except ValueError:
                     print("Valeur invalid!")
                 else:
-                    li_doctor_shedule.append([matricule, li_jour[jour_p_1], li_jour[jour_p_2]])
+                    li_doctor_shedules.append([matricule, li_jour[jour_p_1], li_jour[jour_p_2]])
                     break
 
             elif choix[1] == '-':
@@ -266,12 +260,12 @@ def save_doctor_schedule(matricule):
                     if jour_p_1 < jour_p_2:
                         for i in range(jour_p_1, jour_p_2+1):
                             li_doctor_shedule_temp.append(li_jour[i])
-                        li_doctor_shedule.append(li_doctor_shedule_temp)
+                        li_doctor_shedules.append(li_doctor_shedule_temp)
 
                     else:
                         for i in range(jour_p_2, jour_p_1 + 1):
                             li_doctor_shedule_temp.append(li_jour[i])
-                        li_doctor_shedule.append(li_doctor_shedule_temp)
+                        li_doctor_shedules.append(li_doctor_shedule_temp)
                     break
                     pass
             else:
@@ -297,7 +291,7 @@ def save_doctor_schedule(matricule):
                         li_val.append(val)
             for i in li_val:
                 li_jours.append(li_jour[i])
-            li_doctor_shedule.append(li_jours)
+            li_doctor_shedules.append(li_jours)
             break
     pass
 
@@ -309,17 +303,19 @@ def doctor_schedule(li_doctors: list, li_doctor_shedules: list, matricule: str):
     if len(li_doctors) > 0:
         for i in range(len(li_doctor_shedules)):
             if li_doctor_shedules[i][0] == matricule:
-                return li_doctor_shedule[i][1:]
+                return li_doctor_shedules[i][1:]
+    else:
+        return None
     pass
 
 
-def doctor_appointement(matricule):
-    if len(li_doctor) == 0:
+def doctor_appointement(li_doctors, li_doctor_schedules, matricule):
+    if len(li_doctors) == 0:
         print("Il n'y a pas encore de medecin!")
     else:
-        p_doc = doctor.find_doctor(li_doctor, matricule)      # must be modified
+        p_doc = doctor.find_doctor(li_doctors, matricule)      # must be modified
         if p_doc == 1:
-            work = doctor_schedule(matricule)
+            work = doctor_schedule(li_doctors, li_doctor_schedules, matricule)
             print(f"Vous travaillerez: {work}")
             pass
         else:
@@ -327,28 +323,28 @@ def doctor_appointement(matricule):
     pass
 
 
-def show_patient_complaints(numero_dossier):
+def show_patient_complaints(li_patients, numero_dossier):
     mattt = numero_dossier
     mat_p = 0
-    for i in range(len(li_patient)):
-        if mattt == li_patient[i][8]:
-            print(f"{' ':>30}", li_patient[i][9])
+    for i in range(len(li_patients)):
+        if mattt == li_patients[i][8]:
+            print(f"{' ':>30}", li_patients[i][9])
             mat_p = 1
             break
-        if mat_p == 0 and i == len(li_patient) - 1:
+        if mat_p == 0 and i == len(li_patients) - 1:
             print(f"{' ':>30}Inconnu!")
     pass
 
 
-def show_patient_imc(numero_dossier):
+def show_patient_imc(li_patients, numero_dossier):
     mattt = numero_dossier
     mat_p = 0
-    for i in range(len(li_patient)):
-        if mattt == li_patient[i][8]:
-            print(f"{' ':>30}", li_patient[i][9])
+    for i in range(len(li_patients)):
+        if mattt == li_patients[i][8]:
+            print(f"{' ':>30}", li_patients[i][9])
             mat_p = 1
             break
-        if mat_p == 0 and i == len(li_patient) - 1:
+        if mat_p == 0 and i == len(li_patients) - 1:
             return 0
     pass
 
@@ -395,6 +391,13 @@ def main():
     """
 
     """
+    li_doctor = []
+    li_patient = []
+    # di_patient = {}
+    li_complain = []
+    li_doctor_shedule = []
+    len_doc, len_pat = len(li_doctor), len(li_patient)
+    debut = 0
     titre()
     while 1:
         menu()
