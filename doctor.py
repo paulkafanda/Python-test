@@ -11,8 +11,8 @@ def find_doctor(li_doc: list, matricule: str):
     for i in range(len(li_doc)):
         if mattt == li_doc[i][4]:
             return 1
-        elif i == len(li_doc) - 1:
-            return 0
+
+    return 0
 
 
 def load_matricule(li_doctor: list, nom: str, postnom: str):
