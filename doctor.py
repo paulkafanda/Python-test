@@ -7,8 +7,8 @@ def find_doctor(li_doc: list, matricule: str):
     :param li_doc: list that will contain all doctors information_s
     :param matricule: string that is the doctor's matricule\n
 
-    return position of doctor in li_doc, else
-    :return None: if not found
+    :return: int position of doctor in li_doc
+    :return: None if not found
     """
     mattt = matricule.upper()
     for i in range(len(li_doc)):
