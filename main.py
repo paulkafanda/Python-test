@@ -198,18 +198,23 @@ def save_complaints(li_patients: list, li_complains: list, num_dossier: str, pla
         return 0
 
 
-def save_doctor_schedule(li_doctor_shedules, matricule):
+def menu_day(marge=30):
+    print(
+        f"\n{'':>{marge}} {'0: LUNDI'}",
+        f"\n{'':>{marge}} {'1: MARDI'}",
+        f"\n{'':>{marge}} {'2: MERCREDI'}",
+        f"\n{'':>{marge}} {'3: JEUDI'}",
+        f"\n{'':>{marge}} {'4: VENDREDI'}",
+        f"\n{'':>{marge}} {'5: SAMEDI'}",
+        f"\n{'':>{marge}} {'6: DIMANCHE'}",
+        sep='\n', end='\n'*2
+    )
+
+
+def save_doctor_schedule(li_doctors, li_doctor_shedules, matricule):
     # oui elle fait beaucoup trop de chose :)
     li_jour = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI", "DIMANCHE"]
-    print(
-        f"\n{'':>30} {'0: LUNDI'}"
-        f"\n{'':>30} {'1: MARDI'}"
-        f"\n{'':>30} {'2: MERCREDI'}"
-        f"\n{'':>30} {'3: JEUDI'}"
-        f"\n{'':>30} {'4: VENDREDI'}"
-        f"\n{'':>30} {'5: SAMEDI'}"
-        f"\n{'':>30} {'6: DIMANCHE'}\n"
-    )
+
 
     # Si la choix est vide l'on doit reentrer une valeur
     # si choix contient 1 car on essaie de le convertir en entier
@@ -367,7 +372,7 @@ def show_patient_imc(li_patients, numero_dossier):
         return None
 
 
-def menu(marge: int):
+def menu(marge=30):
     """This function show menu whith a left marge
     :param marge: left marge that print will have
     """
@@ -386,7 +391,7 @@ def menu(marge: int):
           sep="\n")
 
 
-def nppt(marge):
+def nppt(marge=25):
     nom = input(f"{' ':>{marge}}le nom: ").upper()
     postnom = input(f"{' ':>{marge}}le Post-nom: ").upper()
     prenom = input(f"{' ':>{marge}}le Prenom: ").capitalize()
@@ -418,7 +423,7 @@ def main():
     # di_patient = {}
     li_complain = []
     li_doctor_shedule = []
-    len_doc, len_pat = len(li_doctor), len(li_patient)
+    # len_doc, len_pat = len(li_doctor), len(li_patient)
     debut = 0
     titre()
     while 1:
@@ -473,7 +478,7 @@ def main():
                 pass
             case 3:
                 print(f"{' ':>30} :LISTES DES DOCTEURS:\n")
-                show_doctor()
+                show_doctor(li_doctor)
                 pass
 
             case 4:
@@ -502,7 +507,7 @@ def main():
             case 8:
                 print(f"{' ':>20} :AFFICHAGE DE L'IMC D'UN PATIENT DONNE:\n")
                 numero_dossier = (input("Le numero du dossier: ")).upper()
-                show_patient_imc(numero_dossier)
+                show_patient_imc(li_patient, numero_dossier)        # MUST CHECH:::
                 pass
 
             case 9:
@@ -510,7 +515,7 @@ def main():
                 matricule = input("Le matricule du medecin: ")
                 p_doc = doctor.find_doctor(li_doctor, matricule)      # MUST BE MODIFIED
                 if p_doc == 1:
-                    save_doctor_schedule(matricule)
+                    save_doctor_schedule(li_doctor_shedule, matricule)
                 else:
                     print(f"{' ':>20}Docteur introuvable!\n")
 
