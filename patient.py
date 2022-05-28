@@ -187,3 +187,16 @@ def show_patient_imc(li_patients, numero_dossier):
 
     else:
         return None
+
+
+def show_patient_complaints(li_patients, numero_dossier):
+    mattt = numero_dossier
+    mat_p = 0
+    for i in range(len(li_patients)):
+        if mattt == li_patients[i][8]:
+            print(f"{' ':>30}", li_patients[i][9])
+            mat_p = 1
+            break
+        if mat_p == 0 and i == len(li_patients) - 1:
+            print(f"{' ':>30}Inconnu!")
+    pass
