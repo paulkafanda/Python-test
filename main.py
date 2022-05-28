@@ -367,36 +367,40 @@ def show_patient_imc(li_patients, numero_dossier):
         return None
 
 
-def menu():
-    print(f"{' ':>30}{'1:':3} {'add_new_doctor':30}".upper(),
-          f"{' ':>30}{'2:':3} {'add_new_patient':30}".upper(),
-          f"{' ':>30}{'3:':3} {'show_doctor':30}".upper(),
-          f"{' ':>30}{'4:':3} {'show_patients':30}".upper(),
-          f"{' ':>30}{'5:':3} {'find patient by him name':30}".upper(),
-          f"{' ':>30}{'6:':3} {'find patient by him code'}".upper(),
-          f"{' ':>30}{'7:':3} nettoyer le terminal".upper(),
-          f"{' ':>30}{'8:':3} {'show patient imc'}".upper(),
-          f"{' ':>30}{'9:':3} {'save doctor schedule'}".upper(),
-          f"{' ':>30}{'10:':3} {'find patient by him code'}".upper(),
-          f"{' ':>30}{'11:':3} {'verify doctor appointment'}".upper(),
-          f"{' ':>30}{'un autre nombre pour quitter':30}".upper(),
+def menu(marge: int):
+    """This function show menu whith a left marge
+    :param marge: left marge that print will have
+    """
+    print(f"{' ':>{marge}}{'1:':3} add_new_doctor".upper(),
+          f"{' ':>{marge}}{'2:':3} add_new_patient".upper(),
+          f"{' ':>{marge}}{'3:':3} show_doctor".upper(),
+          f"{' ':>{marge}}{'4:':3} show_patients".upper(),
+          f"{' ':>{marge}}{'5:':3} find patient by him name".upper(),
+          f"{' ':>{marge}}{'6:':3} find patient by him code".upper(),
+          f"{' ':>{marge}}{'7:':3} nettoyer le terminal".upper(),
+          f"{' ':>{marge}}{'8:':3} show patient imc".upper(),
+          f"{' ':>{marge}}{'9:':3} save doctor schedule".upper(),
+          f"{' ':>{marge}}{'10:':3} find patient by him code".upper(),
+          f"{' ':>{marge}}{'11:':3} verify doctor appointment".upper(),
+          f"{' ':>{marge}}{'un autre nombre pour quitter':30}".upper(),
           sep="\n")
 
 
-def nppt():
-    nom = input(f"{' ':>30}le nom: ").upper()
-    postnom = input(f"{' ':>30}le Post-nom: ").upper()
-    prenom = input(f"{' ':>30}le Prenom: ").capitalize()
-    tel = input(f"{' ':>30}le Tel: ")
+def nppt(marge):
+    nom = input(f"{' ':>{marge}}le nom: ").upper()
+    postnom = input(f"{' ':>{marge}}le Post-nom: ").upper()
+    prenom = input(f"{' ':>{marge}}le Prenom: ").capitalize()
+    tel = input(f"{' ':>{marge}}le Tel: ")
 
     return nom, postnom, prenom, tel
 
 
-def titre():
+def titre(marge=29):
     print(
-        f"\n{' ':>20} {' DEBUT ':#^50}",
-        f"{' ':>29} {'PROGRAMME-DE-GESTION-D-UN-HOPITAL':#^33}",
-        f"{' ':>20} {' DEBUT ':#^50}",
+        f""
+        f"{' ':>{marge-9}} {' DEBUT ':#^50}",
+        f"{' ':>{marge}} {'PROGRAMME-DE-GESTION-D-UN-HOPITAL':#^33}",
+        f"{' ':>{marge-9}} {' DEBUT ':#^50}",
         sep='\n', end='\n' * 2
     )
 
