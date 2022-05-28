@@ -156,3 +156,34 @@ def save_complaints(li_patients: list, li_complains: list, num_dossier: str, pla
         return 1
     else:
         return 0
+
+
+def show_patient_imc(li_patients, numero_dossier):
+    li_status_imc = [
+        "Insuffisance pondérale (maigreur)",
+        "Corpulence normale",
+        "Surpoids",
+        "Obésité modérée",
+        "Obésité sévère",
+        "Obésité morbide ou massive"
+    ]
+    f = find_patient(li_patients, numero_dossier)
+
+    if isinstance(f, int):
+        imc = li_patients[f][9]
+
+        if imc < 18.5:
+            return li_status_imc[0]
+        elif 18.5 <= imc < 25:
+            return li_status_imc[1]
+        elif 25 <= imc < 30:
+            return li_status_imc[2]
+        elif 30 <= imc < 35:
+            return li_status_imc[3]
+        elif 35 <= imc < 40:
+            return li_status_imc[4]
+        else:
+            return li_status_imc[5]
+
+    else:
+        return None
