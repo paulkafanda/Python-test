@@ -71,3 +71,28 @@ def show_doctor(li_doctors):
         )
     seppep()
     pass
+
+
+def doctor_schedule(li_doctors: list, li_doctor_shedules: list, matricule: str):
+    matricule = matricule.upper()
+
+    # si il y'a au moins 1 medecin
+    if len(li_doctors) > 0:
+        for i in range(len(li_doctor_shedules)):
+            if li_doctor_shedules[i][0] == matricule:
+                return li_doctor_shedules[i][1:]
+    else:
+        return None
+
+
+def doctor_appointment(li_doctors, li_doctor_schedules, matricule):
+    if len(li_doctors) == 0:
+        print("Il n'y a pas encore de medecin!")
+    else:
+        p_doc = find_doctor(li_doctors, matricule)      # must be modified
+        if p_doc == 1:
+            work = doctor_schedule(li_doctors, li_doctor_schedules, matricule)
+            return work
+
+        else:
+            return None
