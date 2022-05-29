@@ -1,5 +1,9 @@
 import datetime
-from main import seppep
+# from main import seppep
+
+
+def seppep():
+    print('\n' * 2)
 
 
 def load_numero_dossier(li_patients, nom, postnom, prenom, genre):
@@ -21,8 +25,8 @@ def find_patient_npp(li_patients, nom, postnom, prenom):
     for i in range(len(li_patients)):
         if nom == li_patients[i][0] and postnom == li_patients[i][1] and prenom == li_patients[i][2]:
             return i
-        else:
-            return None
+
+    return None
 
 
 def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre, age):
@@ -56,7 +60,7 @@ def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre
             li_patients[i][8],
             str(imc)
         ]
-        for k in range(li_patients[i]):
+        for k in range(len(li_patients[i])):
             li_patients[i][k] = li_patient_temp[k]
         # li_patients[i] = li_patient_temp[:]
         pass
@@ -78,8 +82,7 @@ def add_new_patient(li_patients, nom, postnom, prenom, tel, poids, taille, genre
                 str(imc)
             ]
         )
-
-    return li_patients[0]
+    # return li_patients[0]
 
 
 def find_patients(li_patients, nom):
@@ -109,22 +112,25 @@ def find_patient(li_patients, numero_dossier):
 
 
 def show_patients(li_patients):
-    for i in range(len(li_patients)):
-        # 2
-        # print(f"{' ':>30}", i + 1, " ".join(li_patient[i]))
-        print(
-            f"{li_patients[i][0]:10} "
-            f"{li_patients[i][1]:10} "
-            f"{li_patients[i][2]:10} "
-            f"{li_patients[i][3]:10} "
-            f"{li_patients[i][4]:5} "
-            f"{li_patients[i][5]:4} "
-            f"{li_patients[i][6]:1} "
-            f"{li_patients[i][7]:3} "
-            f"{li_patients[i][8]:10} "
-            f"{li_patients[i][9]:5}"
-        )
-    seppep()
+    if len(li_patients) == 0:
+        return None
+    else:
+        for i in range(len(li_patients)):
+            # 2
+            # print(f"{' ':>30}", i + 1, " ".join(li_patient[i]))
+            print(
+                f"{li_patients[i][0]:10} "
+                f"{li_patients[i][1]:10} "
+                f"{li_patients[i][2]:10} "
+                f"{li_patients[i][3]:10} "
+                f"{li_patients[i][4]:5} "
+                f"{li_patients[i][5]:4} "
+                f"{li_patients[i][6]:1} "
+                f"{li_patients[i][7]:3} "
+                f"{li_patients[i][8]:10} "
+                f"{li_patients[i][9]:5}"
+            )
+        seppep()
     pass
 
 
@@ -170,7 +176,7 @@ def show_patient_imc(li_patients, numero_dossier):
     f = find_patient(li_patients, numero_dossier)
 
     if isinstance(f, int):
-        imc = li_patients[f][9]
+        imc = float(li_patients[f][9])
 
         if imc < 18.5:
             return li_status_imc[0]
