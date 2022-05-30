@@ -21,71 +21,17 @@ def clear():
 
 def menu_day(marge=30):     # MUST CHECK:::
     print(
-        f"\n{'':>{marge}} {'0: LUNDI'}",
-        f"\n{'':>{marge}} {'1: MARDI'}",
-        f"\n{'':>{marge}} {'2: MERCREDI'}",
-        f"\n{'':>{marge}} {'3: JEUDI'}",
-        f"\n{'':>{marge}} {'4: VENDREDI'}",
-        f"\n{'':>{marge}} {'5: SAMEDI'}",
-        f"\n{'':>{marge}} {'6: DIMANCHE'}",
+        f"{'':>{marge}} {'0: LUNDI'}",
+        f"{'':>{marge}} {'1: MARDI'}",
+        f"{'':>{marge}} {'2: MERCREDI'}",
+        f"{'':>{marge}} {'3: JEUDI'}",
+        f"{'':>{marge}} {'4: VENDREDI'}",
+        f"{'':>{marge}} {'5: SAMEDI'}",
+        f"{'':>{marge}} {'6: DIMANCHE'}",
         sep='\n', end='\n'*2
     )
 
 
-def save_doctor_schedule(li_doctors: list, li_doctor_shedules: list, matricule: str, horaire: str):
-    """
-    Cette fonction gere l'agenda de tout les medecin de l'hopital
-    En generale elle modifie li_doctor_schidules
-    """
-    # oui elle fait beaucoup trop de chose :)
-    li_jour = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI", "DIMANCHE"]
-
-    # menu_day()        MUST USE IN MAIN
-
-    # Si la choix est vide l'on doit reentrer une valeur
-    # si choix contient 1 car on essaie de le convertir en entier
-    # puis on ajoute dans li_doctor_shedule, le jour qui porte cet indice dans li_jour
-
-    if len(horaire) == 1:
-        jour_p = int(horaire)
-        li_doctor_shedules.append([matricule, li_jour[jour_p]])
-
-    # On ajoute ce jour
-    # li_doctor_shedule.append([li_jour[jour_p]])
-    elif len(horaire) == 3:
-        if horaire[1] == ';':
-            jour_p_1 = int(horaire[0])
-            jour_p_2 = int(horaire[-1])
-            li_doctor_shedules.append([matricule, li_jour[jour_p_1], li_jour[jour_p_2]])
-
-        elif horaire[1] == ':':
-
-            jour_p_1 = int(horaire[0])
-            jour_p_2 = int(horaire[-1])
-            li_doctor_shedule_temp = [matricule]
-
-            if jour_p_1 < jour_p_2:
-                for i in range(jour_p_1, jour_p_2+1):
-                    li_doctor_shedule_temp.append(li_jour[i])
-                li_doctor_shedules.append(li_doctor_shedule_temp)
-
-            else:
-                for i in range(jour_p_2, jour_p_1 + 1):
-                    li_doctor_shedule_temp.append(li_jour[i])
-                li_doctor_shedules.append(li_doctor_shedule_temp)
-
-    elif 3 < len(horaire) <= 13:
-        li_val = []
-        li_jours = []
-
-        for i in range(len(horaire)):
-            if i % 2 == 0:
-                val = int(horaire[i])
-                li_val.append(val)
-        for i in li_val:
-            li_jours.append(li_jour[i])
-        li_doctor_shedules.append(li_jours)
-    pass
 
 
 
@@ -229,14 +175,23 @@ def main():
             case 5:
                 print(f"{' ':>20} :RECHERCHE DES PATIENTS:\n")
                 nom = input("Le nom | Post-nom | Prenom du Patient: ")
-                patient.find_patients(li_patient, nom)
+                p = patient.find_patients(li_patient, nom)
+                if isinstance(p, list):
+                    print(p)
+                elif isinstance(p, int):
+                    print("Not find!")
+                else:
+                    print("No Info!")
                 # pass
 
             case 6:
                 print(f"{' ':>20} :RECHERCHE D'UN PATIENT PRECI:\n")
                 numero_dossier = (input("Le numero du dossier: ")).upper()
-                patient.find_patient(li_patient, numero_dossier)
-                pass
+                p = patient.find_patient(li_patient, numero_dossier)
+                if isinstance(p, int):
+                    print(li_patient[p])
+                else:
+                    print("No info!")
 
             case 7:
                 print(f"{' ':>20} :NETTOYAGE DU TERMINAL:\n")
@@ -280,7 +235,7 @@ def main():
                                 print("Valeur invalide!")
                                 # choix = input()
                             else:
-                                save_doctor_schedule(li_doctor, li_doctor_shedule, matricule, horaire)
+                                doctor.save_doctor_schedule(li_doctor_shedule, matricule, horaire)
                                 break
                         # Si la longueur est de 3 car
                         elif len(horaire) == 3:
@@ -292,7 +247,7 @@ def main():
                                 except ValueError:
                                     print("Valeur invalid!")
                                 else:
-                                    save_doctor_schedule(li_doctor, li_doctor_shedule, matricule, horaire)
+                                    doctor.save_doctor_schedule(li_doctor_shedule, matricule, horaire)
                                     break
 
                             elif horaire[1] == '-':
@@ -302,7 +257,7 @@ def main():
                                 except ValueError:
                                     print("Valeur invalid!")
                                 else:
-                                    save_doctor_schedule(li_doctor, li_doctor_shedule, matricule, horaire)
+                                    doctor.save_doctor_schedule(li_doctor_shedule, matricule, horaire)
                                     break
                             else:
                                 print("Mauvais separateur")
@@ -330,14 +285,8 @@ def main():
                                     else:
                                         ok_s = 1
                             if ok_s == 1 and ok_v == 1:
-                                save_doctor_schedule(li_doctor, li_doctor_shedule, matricule, horaire)
+                                doctor.save_doctor_schedule(li_doctor_shedule, matricule, horaire)
                             break
-
-
-
-
-
-                    # save_doctor_schedule(li_doctor, li_doctor_shedule, matricule, horaire)
                 else:
                     print(f"{' ':>20}Docteur introuvable!\n")
 
@@ -353,8 +302,8 @@ def main():
                 pass
 
             case _:
+                # Quitter le Programme
                 clear()
-                # print(li_doctor_shedule)
                 print(f"\n{' ':>20} {' FIN ':#^50}")
                 break
     pass
