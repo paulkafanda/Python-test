@@ -97,6 +97,62 @@ def show_doctor(li_doctors):
     pass
 
 
+def save_doctor_schedule(li_doctor_shedules: list, matricule: str, horaire: str):
+    """
+    Cette fonction gere l'agenda de tout les medecin de l'hopital
+    En generale elle modifie li_doctor_schidules
+    """
+    # oui elle fait beaucoup trop de chose :)
+    li_jour = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI", "DIMANCHE"]
+
+    # menu_day()        MUST USE IN MAIN
+
+    # Si la choix est vide l'on doit reentrer une valeur
+    # si choix contient 1 car on essaie de le convertir en entier
+    # puis on ajoute dans li_doctor_shedule, le jour qui porte cet indice dans li_jour
+
+    if len(horaire) == 1:
+        jour_p = int(horaire)
+        li_doctor_shedules.append([matricule, li_jour[jour_p]])
+
+    # On ajoute ce jour
+    # li_doctor_shedule.append([li_jour[jour_p]])
+    elif len(horaire) == 3:
+        if horaire[1] == ';':
+            jour_p_1 = int(horaire[0])
+            jour_p_2 = int(horaire[-1])
+            li_doctor_shedules.append([matricule, li_jour[jour_p_1], li_jour[jour_p_2]])
+
+        elif horaire[1] == ':':
+
+            jour_p_1 = int(horaire[0])
+            jour_p_2 = int(horaire[-1])
+            li_doctor_shedule_temp = [matricule]
+
+            if jour_p_1 < jour_p_2:
+                for i in range(jour_p_1, jour_p_2+1):
+                    li_doctor_shedule_temp.append(li_jour[i])
+                li_doctor_shedules.append(li_doctor_shedule_temp)
+
+            else:
+                for i in range(jour_p_2, jour_p_1 + 1):
+                    li_doctor_shedule_temp.append(li_jour[i])
+                li_doctor_shedules.append(li_doctor_shedule_temp)
+
+    elif 3 < len(horaire) <= 13:
+        li_val = []
+        li_jours = []
+
+        for i in range(len(horaire)):
+            if i % 2 == 0:
+                val = int(horaire[i])
+                li_val.append(val)
+        for i in li_val:
+            li_jours.append(li_jour[i])
+        li_doctor_shedules.append(li_jours)
+    pass
+
+
 def doctor_schedule(li_doctors: list, li_doctor_shedules: list, matricule: str):
     matricule = matricule.upper()
 
