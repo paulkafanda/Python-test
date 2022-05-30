@@ -1,5 +1,9 @@
 import datetime
-from main import seppep
+# from main import seppep
+
+
+def seppep():
+    print('\n' * 2)
 
 
 def find_doctor(li_doc: list, matricule: str):
@@ -14,7 +18,7 @@ def find_doctor(li_doc: list, matricule: str):
     mattt = matricule.upper()
     for i in range(len(li_doc)):
         if mattt == li_doc[i][4]:
-            return 1
+            return i
 
     return None
 
@@ -32,10 +36,18 @@ def load_matricule(li_doctor: list, nom: str, postnom: str):
     return annee[-2:] + (nom[1]).upper() + (postnom[1]).upper() + place.zfill(3)
 
 
-def add_new_doctor(li_doctor: list, nom: str, postnom: str, prenom: str, tel: str, specialisation: str):
+def find_doctor_npp(li_doctors, nom, postnom, prenom):
+    for i in range(len(li_doctors)):
+        if nom == li_doctors[i][0] and postnom == li_doctors[i][1] and prenom == li_doctors[i][2]:
+            return i
+
+    return None
+
+
+def add_new_doctor(li_doctors: list, nom: str, postnom: str, prenom: str, tel: str, specialisation: str):
     """
 
-    :param li_doctor: list tof all doctors
+    :param li_doctors: list tof all doctors
     :param nom: name of a doctor ex(KAFANDA)
     :param postnom: sub name of a doctor ex(NDALA)
     :param prenom: first name oex(Paul)
@@ -43,32 +55,44 @@ def add_new_doctor(li_doctor: list, nom: str, postnom: str, prenom: str, tel: st
     :param specialisation: ex(Pediatre)
     :return: void
     """
-    li_doctors = []
-    matricule = load_matricule(li_doctor, nom, postnom)
+    nom = nom.upper()
+    postnom = postnom.upper()
+    prenom = prenom.capitalize()
+    specialisation = specialisation.upper()
 
-    li_doctors.append(
-        [
-            nom.upper(),
-            postnom.upper(),
-            prenom.capitalize(),
-            tel,
-            matricule.upper(),
-            specialisation.upper()
-        ]
-    )
-    return li_doctors[0]
+    # li_doctors = []
+    i = find_doctor_npp(li_doctors, nom, postnom, prenom)
+    if isinstance(i, int):
+        li_doctors[i][3] = tel
+        li_doctors[i][5] = specialisation
+        pass
+    else:
+        matricule = load_matricule(li_doctors, nom, postnom)
+        li_doctors.append(
+            [
+                nom,
+                postnom,
+                prenom,
+                tel,
+                matricule,
+                specialisation
+            ]
+        )
 
 
 def show_doctor(li_doctors):
-    for i in range(len(li_doctors)):
-        print(
-            f"{li_doctors[i][0]:10} "
-            f"{li_doctors[i][1]:7} "
-            f"{li_doctors[i][2]:7} "
-            f"{li_doctors[i][3]:10} "
-            f"{li_doctors[i][4]:7} "
-            f"{li_doctors[i][5]:4} "
-        )
+    if len(li_doctors) == 0:
+        return None
+    else:
+        for i in range(len(li_doctors)):
+            print(
+                f"{li_doctors[i][0]:10} "
+                f"{li_doctors[i][1]:7} "
+                f"{li_doctors[i][2]:7} "
+                f"{li_doctors[i][3]:10} "
+                f"{li_doctors[i][4]:7} "
+                f"{li_doctors[i][5]:4} "
+            )
     seppep()
     pass
 
