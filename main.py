@@ -50,7 +50,9 @@ def menu(marge=30):
     """This function show menu whith a left marge
     :param marge: left marge that print will have
     """
-    print(f"{' ':>{marge}}{'1:':3} add_new_doctor".upper(),
+    print(f"\n"
+          f"{' ':>{marge-1}} {' MENU ':#^30}",
+          f"{' ':>{marge}}{'1:':3} add_new_doctor".upper(),
           f"{' ':>{marge}}{'2:':3} add_new_patient".upper(),
           f"{' ':>{marge}}{'3:':3} show_doctor".upper(),
           f"{' ':>{marge}}{'4:':3} show_patients".upper(),
@@ -62,15 +64,28 @@ def menu(marge=30):
           f"{' ':>{marge}}{'10:':3} save patient complaints".upper(),
           f"{' ':>{marge}}{'11:':3} verify doctor appointment".upper(),
           f"{' ':>{marge}}{'12:':3} show patient imc".upper(),
+          f"{' ':>{marge}}{'12:':3} show patient complaints".upper(),
           f"{' ':>{marge}}{'un autre nombre pour quitter':30}".upper(),
+          f"{' ':>{marge - 1}} {' MENU ':#^30}",
           sep="\n")
 
 
 def nppt(marge=25):
     nom = input(f"{' ':>{marge}}le nom: ").upper()
+    while len(nom) == 0:
+        nom = input(f"{' ':>{marge}}le nom!: ").upper()
+
     postnom = input(f"{' ':>{marge}}le Post-nom: ").upper()
+    while len(postnom) == 0:
+        postnom = input(f"{' ':>{marge}}le Post-nom!: ").upper()
+
     prenom = input(f"{' ':>{marge}}le Prenom: ").capitalize()
+    while len(prenom) == 0:
+        prenom = input(f"{' ':>{marge}}le Prenom!: ").capitalize()
+
     tel = input(f"{' ':>{marge}}le Tel: ")
+    while len(tel) == 0 or len(tel) > 13:
+        tel = input(f"{' ':>{marge}}le Tel!: ")
 
     return nom, postnom, prenom, tel
 
@@ -231,7 +246,9 @@ def main():
 
                         if len(horaire) == 1:
                             try:
-                                int(horaire)
+                                jo = int(horaire)
+                                if 0 > jo or jo > 6:
+                                    raise ValueError
                             except ValueError:
                                 print("Valeur invalide!")
                                 # choix = input()
@@ -242,8 +259,10 @@ def main():
                         elif len(horaire) == 3:
                             if horaire[1] == ';':
                                 try:
-                                    int(horaire[0])
-                                    int(horaire[-1])
+                                    jo = int(horaire[0])
+                                    jf = int(horaire[-1])
+                                    if 0 > (jo or jf) or (jo or jf) > 6:
+                                        raise ValueError
                                     # break
                                 except ValueError:
                                     print("Valeur invalid!")
@@ -251,10 +270,12 @@ def main():
                                     doctor.save_doctor_schedule(li_doctor_shedule, matricule, horaire)
                                     break
 
-                            elif horaire[1] == '-':
+                            elif horaire[1] == ':':
                                 try:
-                                    int(horaire[0])
-                                    int(horaire[-1])
+                                    jo = int(horaire[0])
+                                    jf = int(horaire[-1])
+                                    if (jf or jo) < 0 or (jo or jf) > 6:
+                                        raise ValueError
                                 except ValueError:
                                     print("Valeur invalid!")
                                 else:
@@ -264,9 +285,6 @@ def main():
                                 print("Mauvais separateur")
                         # ::
                         elif 3 < len(horaire) <= 13:
-                            li_val = []
-                            li_jours = []
-                            val = 0
                             ok_s, ok_v = 0, 0
                             # print(f"la longeure de choix est de: {len(horaire)}")
                             for i in range(len(horaire)):
@@ -279,7 +297,9 @@ def main():
                                         ok_s = 1
                                 elif i % 2 == 0:
                                     try:
-                                        int(horaire[i])
+                                        jo = int(horaire[i])
+                                        if jo < 0 or jo > 6:
+                                            raise ValueError
                                     except ValueError:
                                         print("Valeur invalide!")
                                         ok_v = 0
@@ -299,7 +319,14 @@ def main():
             case 11:
                 print(f"{' ':>20} :AFFICHAGE DE L'AGENDA DU MEDECIN:\n")
                 matricule = (input("Le matricule du Medecin: ")).upper()
-                doctor.doctor_appointment(li_doctor, li_doctor_shedule, matricule)
+                work = doctor.doctor_appointment(li_doctor, li_doctor_shedule, matricule)
+                if isinstance(work, list):
+                    jours = ''
+                    for jour in work:
+                        jours += f'{jour} '
+                    print(f"Vous travaillerez: {jours}")
+                else:
+                    print("No info!")
                 pass
 
             case _:
