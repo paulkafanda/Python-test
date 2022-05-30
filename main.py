@@ -59,8 +59,9 @@ def menu(marge=30):
           f"{' ':>{marge}}{'7:':3} nettoyer le terminal".upper(),
           f"{' ':>{marge}}{'8:':3} show patient imc".upper(),
           f"{' ':>{marge}}{'9:':3} save doctor schedule".upper(),
-          f"{' ':>{marge}}{'10:':3} find patient by him code".upper(),
+          f"{' ':>{marge}}{'10:':3} save patient complaints".upper(),
           f"{' ':>{marge}}{'11:':3} verify doctor appointment".upper(),
+          f"{' ':>{marge}}{'12:':3} show patient imc".upper(),
           f"{' ':>{marge}}{'un autre nombre pour quitter':30}".upper(),
           sep="\n")
 
