@@ -148,17 +148,18 @@ def save_complaints(li_patients: list, li_complains: list, num_dossier: str, pla
     # S'il esiste(le patient)
     if isinstance(i, int):
         # S'il n'y pas encore de Plainte donc pas de fiche
-        if len(li_complains) == 0:
-            li_complains.append(num_dossier)
-            li_complains.append(plainte)
+        if len(li_complains) == 0 or not isinstance(k, int):
+            li_complains.append([num_dossier, plainte])
 
         # S'il a deja une fiche
         elif isinstance(k, int):
             li_complains[k].append(plainte)
 
         # S'il n'a pas encore de fiche
+        """
         elif not isinstance(k, int):
             li_complains.append([num_dossier, plainte])
+            """
         return 1
     else:
         return 0
