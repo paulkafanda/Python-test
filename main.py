@@ -63,14 +63,13 @@ def menu(marge=30):
           f"{' ':>{marge}}{'9:':3} save doctor schedule".upper(),
           f"{' ':>{marge}}{'10:':3} save patient complaints".upper(),
           f"{' ':>{marge}}{'11:':3} verify doctor appointment".upper(),
-          f"{' ':>{marge}}{'12:':3} show patient imc".upper(),
           f"{' ':>{marge}}{'12:':3} show patient complaints".upper(),
           f"{' ':>{marge}}{'un autre nombre pour quitter':30}".upper(),
           f"{' ':>{marge - 1}} {' MENU ':#^30}",
           sep="\n")
 
 
-def nppt(marge=25):
+def nppt(marge=30):
     nom = input(f"{' ':>{marge}}le nom: ").upper()
     while len(nom) == 0:
         nom = input(f"{' ':>{marge}}le nom!: ").upper()
@@ -127,7 +126,7 @@ def main():
 
         match choice:
             case 1:
-                print(f"{' ':>20} :AJOUT D'UN DOCTEUR:\n")
+                print(f"{' ':>30} :AJOUT D'UN DOCTEUR:\n")
                 nom, postnom, prenom, tel = nppt()
                 specialisation = input(f"{' ':>30}la Specialisation: ")
                 # doc = \
@@ -136,7 +135,7 @@ def main():
                 pass
 
             case 2:
-                print(f"{' ':>20} :ENREGISTREMENT 'UN PATIENT:\n")
+                print(f"{' ':>30} :ENREGISTREMENT 'UN PATIENT:\n")
                 nom, postnom, prenom, tel = nppt()
                 while 1:
                     try:
@@ -218,14 +217,14 @@ def main():
             case 8:
                 print(f"{' ':>20} :AFFICHAGE DE L'IMC D'UN PATIENT DONNE:\n")
                 numero_dossier = (input("Le numero du dossier: ")).upper()
-                imc = patient.show_patient_imc(li_patient, numero_dossier)        # MUST CHECH:::
+                imc = patient.show_patient_imc(li_patient, numero_dossier)
                 if isinstance(imc, str):
                     print(imc)
                 else:
                     print("No info!")
                 pass
 
-            case 9:
+            case 9:         # MUST CHECH:::
                 print(f"{' ':>20} :ENREGISTREMENT DE L'HORRAIRE DU MEDCIN:\n")
                 matricule = input("Le matricule du medecin: ")
                 p_doc = doctor.find_doctor(li_doctor, matricule)      # MUST BE MODIFIED
@@ -239,7 +238,7 @@ def main():
                         horaire = input(
                             "Choisissez un jour ex:1 pour Mardi\n"
                             "Ou des jours ex: 2;3 pour Mecredi et Jeudi\n"
-                            "Ou encore une plage de jours ex: 0:6 pour les jours compris entre Lundi & Dimanche"
+                            "Ou encore une plage de jours ex: 0:6 pour les jours compris entre Lundi & Dimanche: "
                         )
                         while len(horaire) == 0:
                             horaire = input("Saisi invalide\nReasseyez: ")
@@ -313,12 +312,24 @@ def main():
 
                 pass
             case 10:
-
+                if len(li_patient) == 0:
+                    print("Pas encore de patient!")
+                else:
+                    print(f"{' ':>20} :ENREGISTREMENT DES PLAINTES D'UN PATIENT:\n")
+                    numero_dossier = (input("Le num de dossier Patient: ")).upper()
+                    p = patient.find_patient(li_patient, numero_dossier)
+                    if isinstance(p, int):
+                        plainte = input("La plainte: ")
+                        reussite = patient.save_complaints(li_patient, li_complain, numero_dossier, plainte)
+                        if reussite == 1:
+                            patient.show_patient_complaints(li_patient, li_complain, numero_dossier)
+                        else:
+                            print("No info!")
                 pass
 
             case 11:
                 print(f"{' ':>20} :AFFICHAGE DE L'AGENDA DU MEDECIN:\n")
-                matricule = (input("Le matricule du Medecin: ")).upper()
+                matricule = (input("Le numero de dossier: ")).upper()
                 work = doctor.doctor_appointment(li_doctor, li_doctor_shedule, matricule)
                 if isinstance(work, list):
                     jours = ''
@@ -329,6 +340,15 @@ def main():
                     print("No info!")
                 pass
 
+            case 12:
+                if len(li_complain) == 0:
+                    print("Aucune plaintes pour l'instant!")
+                else:
+                    print(li_complain)
+                    pass
+                pass
+            case 13:
+                pass
             case _:
                 # Quitter le Programme
                 clear()
